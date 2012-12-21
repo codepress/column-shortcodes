@@ -125,10 +125,13 @@ class Codepress_Column_Shortcodes
 	 */
 	function columns($atts, $content = null, $name='') 
 	{
-		extract(shortcode_atts(array(
+		$atts = shortcode_atts(array(
 			"id" 	=> '',
 			"class" => ''
-		), $atts));
+		), $atts );
+
+		$id = sanitize_text_field( $atts['id'] );
+		$class = sanitize_text_field( $atts['class'] );
 		
 		$content = $this->content_helper($content);
 		
@@ -230,7 +233,10 @@ class Codepress_Column_Shortcodes
 	 */
 	function get_shortcodes()
 	{
-		$shortcodes = array();
+		static $shortcodes;
+
+		if ( ! empty( $shortcodes ) )
+			return $shortcodes;
 		
 		// define column shortcodes
 		$column_shortcodes = array(
