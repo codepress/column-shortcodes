@@ -233,7 +233,10 @@ class Codepress_Column_Shortcodes
 	 */
 	function get_shortcodes()
 	{
-		$shortcodes = array();
+		static $shortcodes;
+
+		if ( ! empty( $shortcodes ) )
+			return $shortcodes;
 		
 		// define column shortcodes
 		$column_shortcodes = array(
