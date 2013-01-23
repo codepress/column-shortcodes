@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Column Shortcodes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-27 16:24+0100\n"
+"PO-Revision-Date: 2013-01-08 11:58+0200\n"
+"Last-Translator: ramiy <r_a_m_i@hotmail.com>\n"
+"Language-Team: Rami Y (wp-tricks.co.il) <r_a_m_i@hotmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: Hebrew\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../column-shortcodes.php:174
+msgid "Select shortcode"
+msgstr "בחר פקודת מקרו"
+
+#: ../column-shortcodes.php:208
+msgid "Column shortcodes"
+msgstr "טור פקודות מקרו"
+
+#: ../column-shortcodes.php:231
+msgid "one half"
+msgstr "חצי"
+
+#: ../column-shortcodes.php:232
+msgid "one third"
+msgstr "שליש"
+
+#: ../column-shortcodes.php:233
+msgid "one fourth"
+msgstr "רבע"
+
+#: ../column-shortcodes.php:234
+msgid "two third"
+msgstr "שני שליש"
+
+#: ../column-shortcodes.php:235
+msgid "three fourth"
+msgstr "שלוש רבעים"
+
+#: ../column-shortcodes.php:236
+msgid "one fifth"
+msgstr "חמישית"
+
+#: ../column-shortcodes.php:237
+msgid "two fifth"
+msgstr "שתי חמישיות"
+
+#: ../column-shortcodes.php:238
+msgid "three fifth"
+msgstr "שלוש חמישיות"
+
+#: ../column-shortcodes.php:239
+msgid "one sixth"
+msgstr "שישית"
+
+#: ../column-shortcodes.php:255
+msgid "last"
+msgstr "אחרון"

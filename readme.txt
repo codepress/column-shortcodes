@@ -1,10 +1,10 @@
 === Column Shortcodes ===
-Contributors: tschutter, davidmosterd
+Contributors: codepress, tschutter, davidmosterd
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZDZRSYLQ4Z76J
 Tags: columns, column, shortcodes, shortcode, divider, layout, posts, editor, wp-admin, admin, codepress, wordpress
 Requires at least: 3.1
-Tested up to: 3.4
-Stable tag: 0.2
+Tested up to: 3.5
+Stable tag: 0.3
 
 Adds shortcodes to easily create columns in your posts or pages.
 
@@ -24,6 +24,7 @@ There are 9 different column widths available from which you can make all combin
 * one fifth (1/5)
 * two fifth (2/5)
 * three fifth (3/5)
+* four fifth (4/5)
 * one sixth (1/6)
 
 A preset stylesheet is included, which you can also overwrite to you liking in your theme's stylesheet.
@@ -66,6 +67,8 @@ You could also type in the shortcode yourself inside the editor. The following s
 [two_fifth_last][/two_fifth_last]
 [three_fifth][/three_fifth]
 [three_fifth_last][/three_fifth_last]
+[four_fifth][/four_fifth]
+[four_fifth_last][/four_fifth_last]
 [one_sixth][/one_sixth]
 [one_sixth_last][/one_sixth_last]
 `
@@ -130,6 +133,10 @@ You can easily overwrite the existing stylesheet. For example you would like to 
 	width: 57%;
 	margin-right: 3%;
 }
+.four_fifth  {
+	width: 76%;
+	margin-right: 3%;
+}
 .one_sixth  {
 	width: 16%;
 	margin-right: 0.6%;
@@ -153,6 +160,11 @@ You will find a .po file in the languages folder which you can use. You can send
 4. Example post with the use of column shortcodes
 
 == Changelog ==
+
+= 0.3 =
+
+* added RTL support and Hebrew language ( thanks to Rami Yushuvaey )
+* added Slovak translation ( thanks to Branco from WebHostingGeeks )
 
 = 0.2 =
 
