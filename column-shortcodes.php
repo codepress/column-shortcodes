@@ -37,7 +37,6 @@ define( 'CPSH_TEXTDOMAIN', 	'column-shortcodes' );
  * Column Shortcodes
  *
  * @since 0.1
- *
  */
 class Codepress_Column_Shortcodes {
 
@@ -246,22 +245,21 @@ class Codepress_Column_Shortcodes {
 				</a>";
 		}
 
-		// popup frame
-		$popup = "
-		<div id='cpsh-wrap' style='display:none'>
-			<div id='cpsh'>
-				<div id='cpsh-generator-shell'>
-					<div id='cpsh-generator-header'>
-						<h2 class='cpsh-title'>" . __('Column shortcodes', CPSH_TEXTDOMAIN) . "</h2>
-						{$select}
+		?>
+
+		<div id="cpsh-wrap" style="display:none">
+			<div id="cpsh">
+				<div id="cpsh-generator-shell">
+					<div id="cpsh-generator-header">
+						<h2 class="cpsh-title"><?php _e( "Column shortcodes", CPSH_TEXTDOMAIN ); ?></h2>
+						<?php echo $select; ?>
 					</div>
-					<div id='cpsh-settings'></div>
+					<div id="cpsh-settings"></div>
 				</div>
 			</div>
 		</div>
-		";
 
-		echo $popup;
+		<?php
 	}
 
 	/**
