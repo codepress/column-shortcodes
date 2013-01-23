@@ -65,7 +65,7 @@ class Codepress_Column_Shortcodes {
 		add_action( 'wp_enqueue_scripts',  array( $this, 'frontend_styles') );
 
 		// scripts, only load when editor is available
-		add_action( 'tiny_mce_plugins', array( $this, 'admin_scripts') );
+		add_filter( 'tiny_mce_plugins', array( $this, 'admin_scripts') );
 
 		// translations
 		load_plugin_textdomain( CPSH_TEXTDOMAIN, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -77,13 +77,13 @@ class Codepress_Column_Shortcodes {
 	 * @since 0.1
 	 */
 	public function admin_styles() {
-		if ( ! $this->has_permissions() || ! $this->is_edit_screen() )
-			return false;
+		if ( $this->has_permissions() && $this->is_edit_screen() ) {
+			
+			wp_enqueue_style( 'cpsh-admin', CPSH_URL.'/assets/css/admin.css', array(), CPSH_VERSION, 'all' );
 
-		wp_enqueue_style( 'cpsh-admin', CPSH_URL.'/assets/css/admin.css', array(), CPSH_VERSION, 'all' );
-
-		if ( is_rtl() ) {
-			wp_enqueue_style( 'cpsh-admin-rtl', CPSH_URL.'/assets/css/admin-rtl.css', array(), CPSH_VERSION, 'all' );
+			if ( is_rtl() ) {
+				wp_enqueue_style( 'cpsh-admin-rtl', CPSH_URL.'/assets/css/admin-rtl.css', array(), CPSH_VERSION, 'all' );
+			}
 		}
 	}
 
@@ -92,11 +92,12 @@ class Codepress_Column_Shortcodes {
 	 *
 	 * @since 0.1
 	 */
-	public function admin_scripts() {
-		if ( ! $this->has_permissions() || ! $this->is_edit_screen() )
-			return false;
+	public function admin_scripts( $plugins ) {
+		if ( $this->has_permissions() && $this->is_edit_screen() ) {
+			wp_enqueue_script( 'cpsh-admin', CPSH_URL.'/assets/js/admin.js', array('jquery'), CPSH_VERSION );
+		}
 
-		wp_enqueue_script( 'cpsh-admin', CPSH_URL.'/assets/js/admin.js', array('jquery'), CPSH_VERSION );
+		return $plugins;
 	}
 
 	/**
