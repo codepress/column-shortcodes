@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: columns, column, shortcodes, shortcode, divider, layout, posts, editor, wp-admin, admin, codepress, wordpress
 Requires at least: 3.1
 Tested up to: 3.5
-Stable tag: 0.3
+Stable tag: 0.4
 
 Adds shortcodes to easily create columns in your posts or pages.
 
@@ -81,7 +81,6 @@ By default these buttons are hidden. If you'd like to use them you can add this 
 add_filter('add_shortcode_html_buttons', '__return_true' );
 `
 
-
 = Where do I add my content? =
 
 When you have selected a shorcode it will be placed in you editor. You will see something like this:
@@ -102,7 +101,7 @@ You can easily overwrite the existing stylesheet. For example you would like to 
 
 `
 .one_half  {
-	width: 48%;	
+	width: 48%;
 	margin-right: 2%;
 }
 .one_third  {
@@ -140,7 +139,7 @@ You can easily overwrite the existing stylesheet. For example you would like to 
 .one_sixth  {
 	width: 16%;
 	margin-right: 0.6%;
-} 
+}
 `
 
 = Will you be adding more shortcodes? =
@@ -161,10 +160,17 @@ You will find a .po file in the languages folder which you can use. You can send
 
 == Changelog ==
 
+= 0.4 =
+
+* added improvements made for inclusion on WordPress.com VIP ( thanks to danielbachhuber )
+* added WordPress coding conventions ( see http://codex.wordpress.org/WordPress_Coding_Standards )
+* added fix for script and style loading
+
 = 0.3 =
 
 * added RTL support and Hebrew language ( thanks to Rami Yushuvaey )
 * added Slovak translation ( thanks to Branco from WebHostingGeeks )
+* added column 4/5
 
 = 0.2 =
 

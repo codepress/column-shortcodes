@@ -27,7 +27,7 @@
 	padding-left: 94px;
 	min-width: 130px;
 	text-decoration: none;
-	background: transparent url(../images/columns.png) no-repeat left 6px;	
+	background: transparent url(../images/columns.png) no-repeat left 6px;
 }
 #cpsh .cp-one_half { background-position: left 6px; }
 #cpsh .cp-one_half_last { background-position: left -14px; }
