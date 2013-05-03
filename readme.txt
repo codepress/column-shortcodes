@@ -95,6 +95,17 @@ Make sure to place your content (text/images etc. ) between the two shortcodes, 
 [one_half]My content goes here...[/one_half]
 `
 
+= My existing theme uses the same shortcodes, how can I solve this? =
+
+You can prefix the shortcode by placing the following in your functions.php. Problem solved =)
+
+`
+add_filter( 'cpsh_prefix', 'set_shortcode_prefix' );
+function set_shortcode_prefix() {
+	return 'myprefix_'; // edit this part if needed
+}
+`
+
 = How can I replace the default Shortcode CSS stylesheet? =
 
 You can easily overwrite the existing stylesheet. For example you would like to add a margin between your columns, you just place the following in your theme's style.css:

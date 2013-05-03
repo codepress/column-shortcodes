@@ -1,7 +1,8 @@
 <?php
+
 /*
 Plugin Name: 	Column Shortcodes
-Version: 		0.5
+Version: 		0.6
 Description: 	Adds shortcodes to easily create columns in your posts or pages
 Author: 		Codepress
 Author URI: 	http://www.codepress.nl
@@ -264,7 +265,7 @@ class Codepress_Column_Shortcodes {
 			$close_tag 	= str_replace( '\n', '', $button['options']['close_tag'] );
 
 			$select .= "
-				<a href='javascript:;' rel='{$open_tag}{$close_tag}' data-tag='{$open_tag}{$close_tag}' class='cp-{$button['name']} columns insert-shortcode'>
+				<a href='javascript:;' rel='{$open_tag}{$close_tag}' data-tag='{$open_tag}{$close_tag}' class='cp-{$button['class']} columns insert-shortcode'>
 					{$button['options']['display_name']}
 				</a>";
 		}
@@ -335,9 +336,14 @@ class Codepress_Column_Shortcodes {
 			'one_sixth' 	=> array ('display_name' => __('one sixth', CPSH_TEXTDOMAIN) )
 		);
 
-		foreach ( $column_shortcodes as $shortcode => $options ) {
+		foreach ( $column_shortcodes as $short => $options ) {
+
+			// add prefix
+			$shortcode = trim( apply_filters( 'cpsh_prefix', '' ) ) . $short;
+
 			$shortcodes[] =	array(
 				'name' 		=> $shortcode,
+				'class'		=> $short,
 				'options' 	=> array(
 					'display_name' 	=> $options['display_name'],
 					'open_tag' 		=> '\n'."[{$shortcode}]",
@@ -346,10 +352,11 @@ class Codepress_Column_Shortcodes {
 				)
 			);
 
-			if ( 'full_width' == $shortcode ) continue;
+			if ( 'full_width' == $short ) continue;
 
 			$shortcodes[] =	array(
 				'name' 		=> "{$shortcode}_last",
+				'class'		=> "{$short}_last",
 				'options' 	=> array(
 					'display_name' 	=> $options['display_name'] . ' (' . __('last', CPSH_TEXTDOMAIN) . ')',
 					'open_tag' 		=> '\n'."[{$shortcode}_last]",
