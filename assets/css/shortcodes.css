@@ -12,6 +12,7 @@
 .four_fifth,
 .one_sixth {
 	float: left;
+	background: #ccc;
 }
 .clear_column {
 	clear:both;
@@ -58,6 +59,27 @@
 }
 .one_sixth  {
 	width: 16.6%;
+}
+
+/* =Responsive
+-------------------------------------------------------------- */
+/* Maximum width of 600 pixels. */
+@media screen and (max-width: 600px) {
+	.full_width,
+	.one_half,
+	.one_third,
+	.two_third,
+	.one_fourth,
+	.three_fourth,
+	.one_fifth,
+	.two_fifth,
+	.three_fifth,
+	.four_fifth,
+	.one_sixth {
+		clear: both;
+		width: 100%;
+		margin: 0;
+	}
 }
 
 /* =Small Margins Template

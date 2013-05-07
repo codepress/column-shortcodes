@@ -215,6 +215,7 @@ You will find a .po file in the languages folder which you can use. You can send
 * added Danish translation ( thanks to Mads Rosendahl )
 * added full width column
 * updated css template for margins ( thanks to intheshallow )
+* added responsive CSS for devices with a max-width viewport of 600pixels
 
 = 0.5 =
 * added the option to add paddings to the columns from the shortcode UI.

@@ -56,47 +56,111 @@
 	width: 16.6%;
 }
 
+/* =Responsive
+-------------------------------------------------------------- */
+/* Maximum width of 600 pixels. */
+@media screen and (max-width: 600px) {
+	.full_width,
+	.one_half,
+	.one_third,
+	.two_third,
+	.one_fourth,
+	.three_fourth,
+	.one_fifth,
+	.two_fifth,
+	.three_fifth,
+	.four_fifth,
+	.one_sixth {
+		clear: both;
+		width: 100%;
+		margin: 0;
+	}
+}
+
 /* =Small Margins Template
 -------------------------------------------------------------- */
 /*
-.one_half  {
-	width: 48%;
-	margin-left: 2%;
+.full_width  {
+	width: 100%;
 }
-.one_third  {
+.one_half {
+	width: 49%;
+	margin-right: 2%;
+}
+.one_half.last_column {
+	width: 49%;
+	margin-right: 0px;
+}
+.one_third {
 	width: 32%;
-	margin-left: 1.3%;
+	margin-right: 2%;
 }
-.two_third  {
-	width: 64%;
-	margin-left: 2.6%;
+.one_third.last_column {
+	width: 32%;
+	margin-right: 0px;
 }
-.one_fourth  {
-	width: 24%;
-	margin-left: 1%;
+.two_third {
+	width: 66%;
+	margin-right: 2%;
 }
-.three_fourth  {
-	width: 72%;
-	margin-left: 3%;
+.two_third.last_column {
+	width: 66%;
+	margin-right: 0px;
 }
-.one_fifth  {
-	width: 19%;
-	margin-left: 1%;
+.one_fourth {
+	width: 23.5%;
+	margin-right: 2%;
 }
-.two_fifth  {
-	width: 38%;
-	margin-left: 2%;
+.one_fourth.last_column {
+	width: 23.5%;
+	margin-right: 0px;
 }
-.three_fifth  {
-	width: 57%;
-	margin-left: 3%;
+.three_fourth {
+	width: 74.5%;
+	margin-right: 2%;
 }
-.four_fifth  {
-	width: 76%;
-	margin-right: 3%;
+.three_fourth.last_column {
+	width: 74.5%;
+	margin-right: 0px;
 }
-.one_sixth  {
-	width: 16%;
-	margin-left: 0.6%;
+.one_fifth {
+	width: 18.4%;
+	margin-right: 2%;
+}
+.one_fifth.last_column {
+	width: 18.4%;
+	margin-right: 0px;
+}
+.two_fifth {
+	width: 39%;
+	margin-right: 2%;
+}
+.two_fifth.last_column {
+	width: 39%;
+	margin-right: 0px;
+}
+.three_fifth {
+	width: 59%;
+	margin-right: 2%;
+}
+.three_fifth.last_column {
+	width: 59%;
+	margin-right: 0px;
+}
+.four_fifth {
+	width: 79.6%;
+	margin-right: 2%;
+}
+.four_fifth.last_column {
+	width: 79.6%;
+	margin-right: 0px;
+}
+.one_sixth {
+	width: 15%;
+	margin-right: 2%;
+}
+.one_sixth.last_column {
+	width: 15%;
+	margin-right: 0px;
 }
 */

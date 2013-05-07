@@ -58,7 +58,7 @@ class Codepress_Column_Shortcodes {
 	public function init() {
 		$this->add_shortcodes();
 
-		add_action('admin_init', array( $this, 'add_editor_buttons' ) );
+		add_action( 'admin_init', array( $this, 'add_editor_buttons' ) );
 		add_action( 'admin_footer', array( $this, 'popup' ) );
 
 		// styling
