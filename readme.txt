@@ -12,10 +12,11 @@ Adds shortcodes to easily create columns in your posts or pages.
 
 Adds shortcodes to easily create columns in your posts or pages.
 
-Sometimes you just need to divide your page into different columns. With this plugin you just select a column shortcode and it will add the column to the page.
+Sometimes you just need to divide your page into different columns. With this plugin you just select a column shortcode and it will add the column to the page. You can also change the padding of each individual column from the UI.
 
-There are 9 different column widths available from which you can make all combinations:
+There are 10 different column widths available from which you can make all combinations:
 
+* full width (1/1)
 * half (1/2)
 * one third (1/3)
 * two third (2/3)
@@ -51,6 +52,7 @@ The easiest way is to use the added icon on the top of your editor ( right next 
 You could also type in the shortcode yourself inside the editor. The following shortcodes are available:
 
 `
+[full_width][/full_width]
 [one_half][/one_half]
 [one_half_last][/one_half_last]
 [one_third][/one_third]
@@ -106,90 +108,98 @@ function set_shortcode_prefix() {
 }
 `
 
+= How can I hide the Padding Settings? =
+
+In patch 0.6 we added padding settings (optional) to the plugin. If you would like to hide this settings menu you can place the following in your functions.php
+
+`
+add_filter( 'cpsh_hide_padding_settings', '__return_true' );
+`
+
 = How can I replace the default Shortcode CSS stylesheet? =
 
 You can easily overwrite the existing stylesheet. For example you would like to add a margin between your columns, you just place the following in your theme's style.css:
 
 `
 .one_half {
-	width: 49%;
-	margin-right: 2%;
+	width: 49% !important;
+	margin-right: 2% !important;
 }
 .one_half.last_column {
-	width: 49%;
-	margin-right: 0px;
+	width: 49% !important;
+	margin-right: 0px !important;
 }
 .one_third {
-	width: 32%;
-	margin-right: 2%;
+	width: 32% !important;
+	margin-right: 2% !important;
 }
 .one_third.last_column {
-	width: 32%;
-	margin-right: 0px;
+	width: 32% !important;
+	margin-right: 0px !important;
 }
 .two_third {
-	width: 66%;
-	margin-right: 2%;
+	width: 66% !important;
+	margin-right: 2% !important;
 }
 .two_third.last_column {
-	width: 66%;
-	margin-right: 0px;
+	width: 66% !important;
+	margin-right: 0px !important;
 }
 .one_fourth {
-	width: 23.5%;
-	margin-right: 2%;
+	width: 23.5% !important;
+	margin-right: 2% !important;
 }
 .one_fourth.last_column {
-	width: 23.5%;
-	margin-right: 0px;
+	width: 23.5% !important;
+	margin-right: 0px !important;
 }
 .three_fourth {
-	width: 74.5%;
-	margin-right: 2%;
+	width: 74.5% !important;
+	margin-right: 2% !important;
 }
 .three_fourth.last_column {
-	width: 74.5%;
-	margin-right: 0px;
+	width: 74.5% !important;
+	margin-right: 0px !important;
 }
 .one_fifth {
-	width: 18.4%;
-	margin-right: 2%;
+	width: 18.4% !important;
+	margin-right: 2% !important;
 }
 .one_fifth.last_column {
-	width: 18.4%;
-	margin-right: 0px;
+	width: 18.4% !important;
+	margin-right: 0px !important;
 }
 .two_fifth {
-	width: 39%;
-	margin-right: 2%;
+	width: 39% !important;
+	margin-right: 2% !important;
 }
 .two_fifth.last_column {
-	width: 39%;
-	margin-right: 0px;
+	width: 39% !important;
+	margin-right: 0px !important;
 }
 .three_fifth {
-	width: 59%;
-	margin-right: 2%;
+	width: 59% !important;
+	margin-right: 2% !important;
 }
 .three_fifth.last_column {
-	width: 59%;
-	margin-right: 0px;
+	width: 59% !important;
+	margin-right: 0px !important;
 }
 .four_fifth {
-	width: 79.6%;
-	margin-right: 2%;
+	width: 79.6% !important;
+	margin-right: 2% !important;
 }
 .four_fifth.last_column {
-	width: 79.6%;
-	margin-right: 0px;
+	width: 79.6% !important;
+	margin-right: 0px !important;
 }
 .one_sixth {
-	width: 15%;
-	margin-right: 2%;
+	width: 15% !important;
+	margin-right: 2% !important;
 }
 .one_sixth.last_column {
-	width: 15%;
-	margin-right: 0px;
+	width: 15% !important;
+	margin-right: 0px !important;
 }
 `
 

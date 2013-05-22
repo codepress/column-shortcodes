@@ -62,7 +62,7 @@
 /* =Settings
 -------------------------------------------------------------- */
 #cpsh .cpsh-settings {
-	float: left;
+	float: right;
 	width: 50%;
 }
 #preview-padding {
@@ -70,6 +70,7 @@
 }
 #preview-padding .column-container {
 	width: 200px;
+	max-height: 370px;
 	border: 1px solid #808080;
 	background: #f3fcff;
 	position: relative;
@@ -110,5 +111,19 @@
 #TB_window  #preview-padding .padding-reset {
 	color: #097BB4;
 	text-decoration: none;
-	margin-top: 5px;
+	display: inline-block;
+	padding-left: 3px;
+	padding-top: 3px;
 }
+/*
+#TB_window  #preview-padding .column-container .padding-reset {
+	margin-top: -6px;
+	margin-left: -45px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 90px;
+	overflow: hidden;
+	text-align: center;
+}
+*/

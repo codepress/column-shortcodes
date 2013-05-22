@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Column Shortcodes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-23 11:02+0100\n"
-"PO-Revision-Date: 2013-01-23 11:02+0100\n"
+"POT-Creation-Date: 2013-05-07 14:35+0100\n"
+"PO-Revision-Date: 2013-05-07 14:36+0100\n"
 "Last-Translator: Codepress <info@codepress.nl>\n"
 "Language-Team: Codepress <info@codepress.nl>\n"
 "MIME-Version: 1.0\n"
@@ -15,71 +15,92 @@ msgstr ""
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
 # @ column-shortcodes
-#: ../column-shortcodes.php:222
+#: ../column-shortcodes.php:246
 msgid "Select shortcode"
 msgstr "Selecteer shortcode "
 
 # @ column-shortcodes
-#: ../column-shortcodes.php:255
+#: ../column-shortcodes.php:282
 msgid "Column shortcodes"
 msgstr "Kolom shortcodes"
 
+#: ../column-shortcodes.php:287
+msgid "Column padding ( optional )"
+msgstr "Kolom padding ( optioneel )"
+
+#: ../column-shortcodes.php:289
+msgid ""
+"Use the input fields below to customize the padding of your column shortcode."
+msgstr "Vul onderstaande velden in om de padding van de columns aan te passen."
+
+#: ../column-shortcodes.php:290
+msgid "Enter padding first, then select your column shortcode."
+msgstr "Vul eerste de padding in, selecteer daarna je kolom shortcode."
+
+#: ../column-shortcodes.php:303
+msgid "reset"
+msgstr "herstel"
+
+#: ../column-shortcodes.php:329
+msgid "full width"
+msgstr "volledige breedte"
+
 # @ column-shortcodes
-#: ../column-shortcodes.php:280
+#: ../column-shortcodes.php:330
 msgid "one half"
 msgstr "half"
 
 # @ column-shortcodes
-#: ../column-shortcodes.php:281
+#: ../column-shortcodes.php:331
 msgid "one third"
 msgstr "een derde"
 
 # @ column-shortcodes
-#: ../column-shortcodes.php:282
+#: ../column-shortcodes.php:332
 msgid "one fourth"
 msgstr "een vierde"
 
 # @ column-shortcodes
-#: ../column-shortcodes.php:283
+#: ../column-shortcodes.php:333
 msgid "two third"
 msgstr "tweederde"
 
 # @ column-shortcodes
-#: ../column-shortcodes.php:284
+#: ../column-shortcodes.php:334
 msgid "three fourth"
 msgstr "drie vierde"
 
 # @ column-shortcodes
-#: ../column-shortcodes.php:285
+#: ../column-shortcodes.php:335
 msgid "one fifth"
 msgstr "een vijfde"
 
 # @ column-shortcodes
-#: ../column-shortcodes.php:286
+#: ../column-shortcodes.php:336
 msgid "two fifth"
 msgstr "twee vijfde"
 
 # @ column-shortcodes
-#: ../column-shortcodes.php:287
+#: ../column-shortcodes.php:337
 msgid "three fifth"
 msgstr "drie vijfde"
 
 # @ column-shortcodes
-#: ../column-shortcodes.php:288
+#: ../column-shortcodes.php:338
 msgid "four fifth"
 msgstr "vier vijfde"
 
 # @ column-shortcodes
-#: ../column-shortcodes.php:289
+#: ../column-shortcodes.php:339
 msgid "one sixth"
 msgstr "een zesde"
 
 # @ column-shortcodes
-#: ../column-shortcodes.php:305
+#: ../column-shortcodes.php:364
 msgid "last"
 msgstr "laatste"

@@ -73,7 +73,9 @@
 	.one_sixth {
 		clear: both;
 		width: 100%;
-		margin: 0;
+		margin-left: 0;
+		margin-right: 0;
+		margin-bottom: 1em;
 	}
 }
 
@@ -84,83 +86,83 @@
 	width: 100%;
 }
 .one_half {
-	width: 49%;
-	margin-right: 2%;
+	width: 49% !important;
+	margin-left: 2% !important;
 }
 .one_half.last_column {
-	width: 49%;
-	margin-right: 0px;
+	width: 49% !important;
+	margin-left: 0px !important;
 }
 .one_third {
-	width: 32%;
-	margin-right: 2%;
+	width: 32% !important;
+	margin-left: 2% !important;
 }
 .one_third.last_column {
-	width: 32%;
-	margin-right: 0px;
+	width: 32% !important;
+	margin-left: 0px !important;
 }
 .two_third {
-	width: 66%;
-	margin-right: 2%;
+	width: 66% !important;
+	margin-left: 2% !important;
 }
 .two_third.last_column {
-	width: 66%;
-	margin-right: 0px;
+	width: 66% !important;
+	margin-left: 0px !important;
 }
 .one_fourth {
-	width: 23.5%;
-	margin-right: 2%;
+	width: 23.5% !important;
+	margin-left: 2% !important;
 }
 .one_fourth.last_column {
-	width: 23.5%;
-	margin-right: 0px;
+	width: 23.5% !important;
+	margin-left: 0px !important;
 }
 .three_fourth {
-	width: 74.5%;
-	margin-right: 2%;
+	width: 74.5% !important;
+	margin-left: 2% !important;
 }
 .three_fourth.last_column {
-	width: 74.5%;
-	margin-right: 0px;
+	width: 74.5% !important;
+	margin-left: 0px !important;
 }
 .one_fifth {
-	width: 18.4%;
-	margin-right: 2%;
+	width: 18.4% !important;
+	margin-left: 2% !important;
 }
 .one_fifth.last_column {
-	width: 18.4%;
-	margin-right: 0px;
+	width: 18.4% !important;
+	margin-left: 0px !important;
 }
 .two_fifth {
-	width: 39%;
-	margin-right: 2%;
+	width: 39% !important;
+	margin-left: 2% !important;
 }
 .two_fifth.last_column {
-	width: 39%;
-	margin-right: 0px;
+	width: 39% !important;
+	margin-left: 0px !important;
 }
 .three_fifth {
-	width: 59%;
-	margin-right: 2%;
+	width: 59% !important;
+	margin-left: 2% !important;
 }
 .three_fifth.last_column {
-	width: 59%;
-	margin-right: 0px;
+	width: 59% !important;
+	margin-left: 0px !important;
 }
 .four_fifth {
-	width: 79.6%;
-	margin-right: 2%;
+	width: 79.6% !important;
+	margin-left: 2% !important;
 }
 .four_fifth.last_column {
-	width: 79.6%;
-	margin-right: 0px;
+	width: 79.6% !important;
+	margin-left: 0px !important;
 }
 .one_sixth {
-	width: 15%;
-	margin-right: 2%;
+	width: 15% !important;
+	margin-left: 2% !important;
 }
 .one_sixth.last_column {
-	width: 15%;
-	margin-right: 0px;
+	width: 15% !important;
+	margin-left: 0px !important;
 }
 */

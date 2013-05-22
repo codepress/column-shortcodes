@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Column Shortcodes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-20 15:46+0100\n"
-"PO-Revision-Date: 2013-01-16 02:19+0300\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2013-05-07 14:35+0100\n"
+"PO-Revision-Date: 2013-05-07 14:35+0100\n"
+"Last-Translator: Codepress <info@codepress.nl>\n"
 "Language-Team: Codepress <info@codepress.nl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12,54 +12,80 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../column-shortcodes.php:174
+#: ../column-shortcodes.php:246
 msgid "Select shortcode"
 msgstr "Zvoľte krátky"
 
-#: ../column-shortcodes.php:208
+#: ../column-shortcodes.php:282
 msgid "Column shortcodes"
 msgstr "Stĺpec shortcodes"
 
-#: ../column-shortcodes.php:231
+#: ../column-shortcodes.php:287
+msgid "Column padding ( optional )"
+msgstr ""
+
+#: ../column-shortcodes.php:289
+msgid ""
+"Use the input fields below to customize the padding of your column shortcode."
+msgstr ""
+
+#: ../column-shortcodes.php:290
+msgid "Enter padding first, then select your column shortcode."
+msgstr ""
+
+#: ../column-shortcodes.php:303
+msgid "reset"
+msgstr ""
+
+#: ../column-shortcodes.php:329
+msgid "full width"
+msgstr ""
+
+#: ../column-shortcodes.php:330
 msgid "one half"
 msgstr "jedna polovica"
 
-#: ../column-shortcodes.php:232
+#: ../column-shortcodes.php:331
 msgid "one third"
 msgstr "jedna tretina"
 
-#: ../column-shortcodes.php:233
+#: ../column-shortcodes.php:332
 msgid "one fourth"
 msgstr "štvrtina"
 
-#: ../column-shortcodes.php:234
+#: ../column-shortcodes.php:333
 msgid "two third"
 msgstr "dve tretiny"
 
-#: ../column-shortcodes.php:235
+#: ../column-shortcodes.php:334
 msgid "three fourth"
 msgstr "tri štvrtý"
 
-#: ../column-shortcodes.php:236
+#: ../column-shortcodes.php:335
 msgid "one fifth"
 msgstr "jedna pätina"
 
-#: ../column-shortcodes.php:237
+#: ../column-shortcodes.php:336
 msgid "two fifth"
 msgstr "dve piaty"
 
-#: ../column-shortcodes.php:238
+#: ../column-shortcodes.php:337
 msgid "three fifth"
 msgstr "tromi pätina"
 
-#: ../column-shortcodes.php:239
+#: ../column-shortcodes.php:338
+#, fuzzy
+msgid "four fifth"
+msgstr "jedna pätina"
+
+#: ../column-shortcodes.php:339
 msgid "one sixth"
 msgstr "jedna šestina"
 
-#: ../column-shortcodes.php:255
+#: ../column-shortcodes.php:364
 msgid "last"
 msgstr "posledný"

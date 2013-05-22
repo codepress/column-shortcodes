@@ -80,10 +80,10 @@ class Codepress_Column_Shortcodes {
 	public function admin_styles() {
 		if ( $this->has_permissions() && $this->is_edit_screen() ) {
 
-			wp_enqueue_style( 'cpsh-admin', CPSH_URL.'/assets/css/admin.css', array(), CPSH_VERSION, 'all' );
+			wp_enqueue_style( 'cpsh-admin', CPSH_URL . '/assets/css/admin.css', array(), CPSH_VERSION, 'all' );
 
 			if ( is_rtl() ) {
-				wp_enqueue_style( 'cpsh-admin-rtl', CPSH_URL.'/assets/css/admin-rtl.css', array(), CPSH_VERSION, 'all' );
+				wp_enqueue_style( 'cpsh-admin-rtl', CPSH_URL . '/assets/css/admin-rtl.css', array(), CPSH_VERSION, 'all' );
 			}
 		}
 	}
@@ -95,8 +95,8 @@ class Codepress_Column_Shortcodes {
 	 */
 	public function admin_scripts( $plugins ) {
 		if ( $this->has_permissions() && $this->is_edit_screen() ) {
-			wp_enqueue_script( 'cpsh-admin', CPSH_URL.'/assets/js/admin.js', array('jquery'), CPSH_VERSION );
-			wp_enqueue_script( 'jquery-cookie', CPSH_URL.'/assets/js/jquery.cookie.js', array('jquery'), CPSH_VERSION );
+			wp_enqueue_script( 'cpsh-admin', CPSH_URL . '/assets/js/admin.js', array( 'jquery' ), CPSH_VERSION );
+			wp_enqueue_script( 'jquery-cookie', CPSH_URL . '/assets/js/jquery.cookie.js', array( 'jquery' ), CPSH_VERSION );
 		}
 
 		return $plugins;
@@ -154,11 +154,11 @@ class Codepress_Column_Shortcodes {
 
 		$content = $this->content_helper( $content );
 
-		// padding
+		// padding generator
 		if ( $padding <> '' ) {
-
-			// check for '0' values
 			$parts = explode(" ", $padding);
+
+			// check for '0' values. if true we will split padding attributes into top,right,bottom and left.
 			if ( $parts && in_array( '0', $parts ) ) {
 				$padding  = !empty( $parts[0] ) ? "padding-top:{$parts[0]};" 	: '';
 				$padding .= !empty( $parts[1] ) ? "padding-right:{$parts[1]};" 	: '';
@@ -221,16 +221,16 @@ class Codepress_Column_Shortcodes {
 	 */
 	function add_editor_buttons() {
 
-		if ( $this->has_permissions() && $this->is_edit_screen() ) {
+		if ( ! $this->has_permissions() || ! $this->is_edit_screen() )
+			return false;
 
-			// add html buttons, when using this filter
-			if( apply_filters( 'add_shortcode_html_buttons', false ) ) {
-				add_action( 'admin_head', array( $this, 'add_html_buttons' ) );
-			}
-
-			// add shortcode button
-			add_action( 'media_buttons', array( $this, 'add_shortcode_button' ), 100 );
+		// add html buttons, when using this filter
+		if( apply_filters( 'add_shortcode_html_buttons', false ) ) {
+			add_action( 'admin_head', array( $this, 'add_html_buttons' ) );
 		}
+
+		// add shortcode button
+		add_action( 'media_buttons', array( $this, 'add_shortcode_button' ), 100 );
 	}
 
 	/**
@@ -283,9 +283,14 @@ class Codepress_Column_Shortcodes {
 							<?php echo $select; ?>
 						</div><!--.cpsh-shortcodes-->
 
+					<?php if ( ! apply_filters( 'cpsh_hide_padding_settings', false ) ) : ?>
+
 						<div class="cpsh-settings">
 							<h2 class="cpsh-title"><?php _e( "Column padding ( optional )", CPSH_TEXTDOMAIN ); ?></h2>
-							<p class="description"><?php _e( "Use the input fields below to customize the padding of your column shortcode.", CPSH_TEXTDOMAIN ); ?></p>
+							<p class="description">
+								<?php _e( "Use the input fields below to customize the padding of your column shortcode.", CPSH_TEXTDOMAIN ); ?>
+								<?php _e( "Enter padding first, then select your column shortcode.", CPSH_TEXTDOMAIN ); ?>
+							</p>
 
 							<div id="preview-padding">
 								<div class="column-container">
@@ -298,12 +303,16 @@ class Codepress_Column_Shortcodes {
 										<input id="padding-left" placeholder="0" value=""/>
 									</div>
 								</div>
+
 								<a class="padding-reset" href="javascript:;"><?php _e( "reset", CPSH_TEXTDOMAIN ); ?></a>
 							</div>
 						</div><!--.cpsh-settings-->
 
+					<?php endif; ?>
+
 					</div><!--cpsh-generator-header-->
-				</div>
+
+				</div><!--cpsh-generator-shell-->
 			</div>
 		</div>
 

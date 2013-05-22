@@ -28,6 +28,9 @@
 	 */
 	function codepressPaddingGenerator() {
 
+		if ( $('#preview-padding').length === 0 )
+			return;
+
 		var fields = $("#preview-padding .padding-fields input");
 
 		// init: restore previous settings
