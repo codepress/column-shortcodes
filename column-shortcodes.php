@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: 	Column Shortcodes
-Version: 		0.6
+Version: 		0.6.1
 Description: 	Adds shortcodes to easily create columns in your posts or pages
 Author: 		Codepress
 Author URI: 	http://www.codepress.nl
@@ -96,7 +96,7 @@ class Codepress_Column_Shortcodes {
 	public function admin_scripts( $plugins ) {
 		if ( $this->has_permissions() && $this->is_edit_screen() ) {
 			wp_enqueue_script( 'cpsh-admin', CPSH_URL . '/assets/js/admin.js', array( 'jquery' ), CPSH_VERSION );
-			wp_enqueue_script( 'jquery-cookie', CPSH_URL . '/assets/js/jquery.cookie.js', array( 'jquery' ), CPSH_VERSION );
+			wp_enqueue_script( 'jquery-cookie', CPSH_URL . '/assets/js/jquery.ck.js', array( 'jquery' ), CPSH_VERSION );
 		}
 
 		return $plugins;
