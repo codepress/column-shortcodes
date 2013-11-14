@@ -7,12 +7,12 @@ msgstr ""
 "POT-Creation-Date: 2013-07-19 10:04+0100\n"
 "PO-Revision-Date: 2013-11-14 16:53+0100\n"
 "Last-Translator: Codepress <info@codepress.nl>\n"
-"Language-Team: Spanish (Spain) (http://www.transifex.com/projects/p/column-"
-"shortcodes/language/es_ES/)\n"
+"Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/column-"
+"shortcodes/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es_ES\n"
+"Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-Basepath: .\n"
@@ -23,52 +23,54 @@ msgstr ""
 
 #: ../column-shortcodes.php:246
 msgid "Select shortcode"
-msgstr "Seleccione códigos abreviados"
+msgstr "Scegli shortcode"
 
 #: ../column-shortcodes.php:282
 msgid "Column shortcodes"
-msgstr "Códigos disponibles"
+msgstr "Shortcode Colonne"
 
 #: ../column-shortcodes.php:289
 msgid "Column padding ( optional )"
-msgstr ""
+msgstr "padding delle colonne (opzionale)"
 
 #: ../column-shortcodes.php:291
 msgid ""
 "Use the input fields below to customize the padding of your column shortcode."
 msgstr ""
+"Usa i campi di testo sottostanti per personalizzare il padding della tua "
+"colonna."
 
 #: ../column-shortcodes.php:292
 msgid "Enter padding first, then select your column shortcode."
-msgstr ""
+msgstr "metti prima il padding, e quindi scegli il tuo shortcode di colonna."
 
 #: ../column-shortcodes.php:307
 msgid "reset"
-msgstr ""
+msgstr "reimposta"
 
 #: ../column-shortcodes.php:335
 msgid "full width"
-msgstr ""
+msgstr "tutta larghezza"
 
 #: ../column-shortcodes.php:336
 msgid "one half"
-msgstr "la mitad"
+msgstr "metà"
 
 #: ../column-shortcodes.php:337
 msgid "one third"
-msgstr "un tercio"
+msgstr "un terzo"
 
 #: ../column-shortcodes.php:338
 msgid "one fourth"
-msgstr "un cuarto"
+msgstr "un quarto"
 
 #: ../column-shortcodes.php:339
 msgid "two third"
-msgstr "dos tercios"
+msgstr "due terzi"
 
 #: ../column-shortcodes.php:340
 msgid "three fourth"
-msgstr "tres cuartos"
+msgstr "tre quarti"
 
 #: ../column-shortcodes.php:341
 msgid "one fifth"
@@ -76,20 +78,20 @@ msgstr "un quinto"
 
 #: ../column-shortcodes.php:342
 msgid "two fifth"
-msgstr "dos quintos"
+msgstr "due quinti"
 
 #: ../column-shortcodes.php:343
 msgid "three fifth"
-msgstr "tres quintos"
+msgstr "tre quinti"
 
 #: ../column-shortcodes.php:344
 msgid "four fifth"
-msgstr "cuatro quintos"
+msgstr "quattro quinti"
 
 #: ../column-shortcodes.php:345
 msgid "one sixth"
-msgstr "un sexto"
+msgstr "un sesto"
 
 #: ../column-shortcodes.php:373
 msgid "last"
-msgstr "final"
+msgstr "ultimo"

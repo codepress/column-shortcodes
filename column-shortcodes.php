@@ -2,11 +2,11 @@
 
 /*
 Plugin Name: 	Column Shortcodes
-Version: 		0.6.1
+Version: 		0.6.3
 Description: 	Adds shortcodes to easily create columns in your posts or pages
 Author: 		Codepress
-Author URI: 	http://www.codepress.nl
-Plugin URI: 	http://www.codepress.nl/plugins/
+Author URI: 	http://www.codepresshq.com/
+Plugin URI: 	http://www.codepresshq.com/wordpress-plugins/shortcode-columns/
 Text Domain: 	column-shortcodes
 Domain Path: 	/languages
 License:		GPLv2
@@ -27,7 +27,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-define( 'CPSH_VERSION', 	'0.6' );
+define( 'CPSH_VERSION', 	'0.6.3' );
 define( 'CPSH_URL', 		plugins_url( '', __FILE__ ) );
 define( 'CPSH_TEXTDOMAIN', 	'column-shortcodes' );
 
@@ -42,11 +42,19 @@ define( 'CPSH_TEXTDOMAIN', 	'column-shortcodes' );
 class Codepress_Column_Shortcodes {
 
 	/**
+	 * Prefix
+	 *
+	 * @since 0.6.3
+	 */
+	private $prefix;
+
+	/**
 	 * Constructor
 	 *
 	 * @since 0.1
 	 */
 	function __construct() {
+
 		add_action( 'wp_loaded', array( $this, 'init') );
 	}
 
@@ -56,7 +64,8 @@ class Codepress_Column_Shortcodes {
 	 * @since 0.1
 	 */
 	public function init() {
-		$this->add_shortcodes();
+
+		$this->prefix = trim( apply_filters( 'cpsh_prefix', '' ) );
 
 		add_action( 'admin_init', array( $this, 'add_editor_buttons' ) );
 		add_action( 'admin_footer', array( $this, 'popup' ) );
@@ -70,6 +79,8 @@ class Codepress_Column_Shortcodes {
 
 		// translations
 		load_plugin_textdomain( CPSH_TEXTDOMAIN, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
+		$this->add_shortcodes();
 	}
 
 	/**
@@ -113,7 +124,6 @@ class Codepress_Column_Shortcodes {
 		} else {
 			wp_enqueue_style( 'cpsh-shortcodes-rtl', CPSH_URL.'/assets/css/shortcodes-rtl.css', array(), CPSH_VERSION, 'all' );
 		}
-
 	}
 
 	/**
@@ -173,10 +183,17 @@ class Codepress_Column_Shortcodes {
 			$content = '<div style="' . esc_attr( $padding ) . '">' . $content . '</div>';
 		}
 
+		// last class
 		$pos = strpos( $name, '_last' );
 
 		if ( false !== $pos ) {
 			$name = str_replace( '_last', ' last_column', $name );
+		}
+
+		// remove prefix from classname
+		// @todo: prefix css instead of removing the prefix from class attr
+		if ( $this->prefix ) {
+			$name = str_replace( $this->prefix, '', $name );
 		}
 
 		$output = "<div{$id} class='{$name}{$class}'>{$content}</div>";
@@ -313,6 +330,8 @@ class Codepress_Column_Shortcodes {
 					</div><!--cpsh-generator-header-->
 
 				</div><!--cpsh-generator-shell-->
+
+				<p class='description'>This is a <a href="http://www.codepresshq.com">Codepress</a> plugin.</p>
 			</div>
 		</div>
 
@@ -331,7 +350,7 @@ class Codepress_Column_Shortcodes {
 			return $shortcodes;
 
 		// define column shortcodes
-		$column_shortcodes = array(
+		$column_shortcodes = apply_filters( 'cpsh_column_shortcodes', array(
 			'full_width' 	=> array ('display_name' => __('full width', CPSH_TEXTDOMAIN) ),
 			'one_half' 		=> array ('display_name' => __('one half', CPSH_TEXTDOMAIN) ),
 			'one_third' 	=> array ('display_name' => __('one third', CPSH_TEXTDOMAIN) ),
@@ -343,12 +362,15 @@ class Codepress_Column_Shortcodes {
 			'three_fifth' 	=> array ('display_name' => __('three fifth', CPSH_TEXTDOMAIN) ),
 			'four_fifth' 	=> array ('display_name' => __('four fifth', CPSH_TEXTDOMAIN) ),
 			'one_sixth' 	=> array ('display_name' => __('one sixth', CPSH_TEXTDOMAIN) )
-		);
+		));
+
+		if ( ! $column_shortcodes )
+			return array();
 
 		foreach ( $column_shortcodes as $short => $options ) {
 
 			// add prefix
-			$shortcode = trim( apply_filters( 'cpsh_prefix', '' ) ) . $short;
+			$shortcode = $this->prefix . $short;
 
 			$shortcodes[] =	array(
 				'name' 		=> $shortcode,
@@ -422,8 +444,7 @@ class Codepress_Column_Shortcodes {
 	 * @param bool $br_tag Filter br-tags
 	 * @return string Shortcode
 	 */
-	 function content_helper( $content, $paragraph_tag = false, $br_tag = false )
-	{
+	function content_helper( $content, $paragraph_tag = false, $br_tag = false ) {
 		$content = preg_replace( '#^<\/p>|^<br \/>|<p>$#', '', $content );
 
 		if ( $br_tag ) {

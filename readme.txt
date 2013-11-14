@@ -3,8 +3,8 @@ Contributors: codepress, tschutter, davidmosterd
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZDZRSYLQ4Z76J
 Tags: columns, column, shortcodes, shortcode, divider, layout, posts, editor, wp-admin, admin, codepress, wordpress
 Requires at least: 3.1
-Tested up to: 3.5
-Stable tag: 0.6.1
+Tested up to: 3.7.1
+Stable tag: 0.6.3
 
 Adds shortcodes to easily create columns in your posts or pages.
 
@@ -32,7 +32,7 @@ A preset stylesheet is included, which you can also overwrite to you liking in y
 
 **Related Links:**
 
-* http://www.codepress.nl/
+* http://www.codepresshq.com/
 
 == Installation ==
 
@@ -114,6 +114,32 @@ In patch 0.6 we added padding settings (optional) to the plugin. If you would li
 
 `
 add_filter( 'cpsh_hide_padding_settings', '__return_true' );
+`
+
+= How can I hide certain Column Shortcodes from the menu? =
+
+If you would like to hide certain column from the menu; place the following in your functions.php
+
+`
+function hide_column_shortcodes( $shortcodes ) {
+
+	/* uncomment ( remove the '//' ) any of the following to remove it's shortcode from menu */
+
+	// unset( $shortcodes['full_width'] );
+	// unset( $shortcodes['one_half'] );
+	// unset( $shortcodes['one_third'] );
+	// unset( $shortcodes['one_fourth'] );
+	// unset( $shortcodes['two_third'] );
+	// unset( $shortcodes['three_fourth'] );
+	// unset( $shortcodes['one_fifth'] );
+	// unset( $shortcodes['two_fifth'] );
+	// unset( $shortcodes['three_fifth'] );
+	// unset( $shortcodes['four_fifth'] );
+	// unset( $shortcodes['one_sixth'] );
+
+	return $shortcodes;
+}
+add_filter( 'cpsh_column_shortcodes', 'hide_column_shortcodes' );
 `
 
 = How can I replace the default Shortcode CSS stylesheet? =
@@ -221,8 +247,16 @@ You will find a .po file in the languages folder which you can use. You can send
 
 == Changelog ==
 
+= 0.6.3 =
+* updated languages
+
+= 0.6.2 =
+* added Italian language ( thanks to Nicola )
+* added Czech language and bug fix ( thanks to Michal Ratajsky )
+
 = 0.6.1 =
 * fixed jquery.cookie.js issue where in some cases the server would reject it
+* added filter for hiding certain column shortcodes from view.
 
 = 0.6 =
 * added Danish translation ( thanks to Mads Rosendahl )
