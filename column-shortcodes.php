@@ -260,7 +260,7 @@ class Codepress_Column_Shortcodes {
 	 */
 	public function add_shortcode_button( $page = null, $target = null ) {
 		?>
-			<a href="#TB_inline?width=640&amp;height=600&amp;inlineId=cpsh-wrap" class="thickbox" title="<?php _e( 'Select shortcode', CPSH_TEXTDOMAIN ); ?>" data-page="<?php echo $page; ?>" data-target="<?php echo $target; ?>">
+			<a href="#TB_inline?width=640&amp;height=600&amp;inlineId=cpsh-wrap" class="thickbox button" title="<?php _e( 'Select shortcode', CPSH_TEXTDOMAIN ); ?>" data-page="<?php echo $page; ?>" data-target="<?php echo $target; ?>">
 				<img src="<?php echo CPSH_URL . "/assets/images/shortcode.png";?>" alt="" />
 			</a>
 		<?php
