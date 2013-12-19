@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: 	Column Shortcodes
-Version: 		0.6.3
+Version: 		0.6.4
 Description: 	Adds shortcodes to easily create columns in your posts or pages
 Author: 		Codepress
 Author URI: 	http://www.codepresshq.com/
@@ -11,7 +11,7 @@ Text Domain: 	column-shortcodes
 Domain Path: 	/languages
 License:		GPLv2
 
-Copyright 2011-2013  Codepress  info@codepress.nl
+Copyright 2011-2014  Codepress  info@codepress.nl
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License version 2 as published by
@@ -27,7 +27,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-define( 'CPSH_VERSION', 	'0.6.3' );
+define( 'CPSH_VERSION', 	'0.6.4' );
 define( 'CPSH_URL', 		plugins_url( '', __FILE__ ) );
 define( 'CPSH_TEXTDOMAIN', 	'column-shortcodes' );
 
@@ -260,7 +260,7 @@ class Codepress_Column_Shortcodes {
 	 */
 	public function add_shortcode_button( $page = null, $target = null ) {
 		?>
-			<a href="#TB_inline?width=640&amp;height=600&amp;inlineId=cpsh-wrap" class="thickbox" title="<?php _e( 'Select shortcode', CPSH_TEXTDOMAIN ); ?>" data-page="<?php echo $page; ?>" data-target="<?php echo $target; ?>">
+			<a href="#TB_inline?width=640&amp;height=600&amp;inlineId=cpsh-wrap" class="thickbox button" title="<?php _e( 'Select shortcode', CPSH_TEXTDOMAIN ); ?>" data-page="<?php echo $page; ?>" data-target="<?php echo $target; ?>">
 				<img src="<?php echo CPSH_URL . "/assets/images/shortcode.png";?>" alt="" />
 			</a>
 		<?php
@@ -331,7 +331,7 @@ class Codepress_Column_Shortcodes {
 
 				</div><!--cpsh-generator-shell-->
 
-				<p class='description'>This is a <a href="http://www.codepresshq.com">Codepress</a> plugin.</p>
+				<p class='description'>Checkout <a href="http://www.codepresshq.com">other plugins by Codepress</a>.</p>
 			</div>
 		</div>
 
