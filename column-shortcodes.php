@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: 	Column Shortcodes
-Version: 		0.6.4
+Version: 		0.6.5
 Description: 	Adds shortcodes to easily create columns in your posts or pages
 Author: 		Codepress
 Author URI: 	http://www.codepresshq.com/
@@ -33,6 +33,11 @@ define( 'CPSH_TEXTDOMAIN', 	'column-shortcodes' );
 
 // Long posts should require a higher limit, see http://core.trac.wordpress.org/ticket/8553
 @ini_set( 'pcre.backtrack_limit', 500000 );
+
+function tt() {
+	remove_action( 'wp_enqueue_scripts', array( 'Codepress_Column_Shortcodes', 'frontend_styles' ) );
+}
+add_action( 'wp_loaded','tt' );
 
 /**
  * Column Shortcodes
@@ -119,10 +124,12 @@ class Codepress_Column_Shortcodes {
 	 * @since 0.1
 	 */
 	public function frontend_styles() {
-		if ( ! is_rtl() ) {
-			wp_enqueue_style( 'cpsh-shortcodes', CPSH_URL.'/assets/css/shortcodes.css', array(), CPSH_VERSION, 'all' );
-		} else {
-			wp_enqueue_style( 'cpsh-shortcodes-rtl', CPSH_URL.'/assets/css/shortcodes-rtl.css', array(), CPSH_VERSION, 'all' );
+		if ( apply_filters( 'cpsh_load_styles', true ) ) {
+			if ( ! is_rtl() ) {
+				wp_enqueue_style( 'cpsh-shortcodes', CPSH_URL.'/assets/css/shortcodes.css', array(), CPSH_VERSION, 'all' );
+			} else {
+				wp_enqueue_style( 'cpsh-shortcodes-rtl', CPSH_URL.'/assets/css/shortcodes-rtl.css', array(), CPSH_VERSION, 'all' );
+			}
 		}
 	}
 
@@ -196,7 +203,7 @@ class Codepress_Column_Shortcodes {
 			$name = str_replace( $this->prefix, '', $name );
 		}
 
-		$output = "<div{$id} class='{$name}{$class}'>{$content}</div>";
+		$output = "<div{$id} class='content-column {$name}{$class}'>{$content}</div>";
 
 		if ( false !== $pos ) {
 			$output .= "<div class='clear_column'></div>";
@@ -213,8 +220,11 @@ class Codepress_Column_Shortcodes {
 	private function is_edit_screen() {
 		global $pagenow;
 
-		if ( in_array( $pagenow, array( 'post-new.php', 'page-new.php', 'post.php', 'page.php', 'profile.php', 'user-edit.php', 'user-new.php' ) ) )
+		$allowed_screens = apply_filters( 'cpsh_allowed_screens', array( 'post-new.php', 'page-new.php', 'post.php', 'page.php', 'profile.php', 'user-edit.php', 'user-new.php' ) );
+
+		if ( in_array( $pagenow, $allowed_screens ) ) {
 			return true;
+		}
 
 		return false;
 	}

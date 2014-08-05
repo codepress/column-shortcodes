@@ -229,6 +229,14 @@ You can easily overwrite the existing stylesheet. For example you would like to 
 }
 `
 
+= How can I prevent the loading of the frontend styling =
+
+If you would like to prevent the loading of the column styling on the frontend; place the following in your functions.php
+
+`
+add_filter( 'cpsh_load_styles', '__return_false' );
+`
+
 = Will you be adding more shortcodes? =
 
 We would love to hear your feedback and suggestions on this. Just send an email to <a href="mailto:info@codepress.nl">info@codepress.nl</a>.
@@ -246,6 +254,9 @@ You will find a .po file in the languages folder which you can use. You can send
 4. Example post with the use of column shortcodes
 
 == Changelog ==
+
+= 0.6.5 =
+* added filter to prevent loading of frontend styles: add_filter( 'cpsh_load_styles', '__return_false' );
 
 = 0.6.4 =
 * updated icon for WP3.8

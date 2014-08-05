@@ -1,0 +1,95 @@
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Column Shortcodes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-19 10:04+0100\n"
+"PO-Revision-Date: 2014-03-10 08:25+0100\n"
+"Last-Translator: Adrian Ambroziak <adrian.ambroziak@gmail.com>\n"
+"Language-Team: Adrian Ambroziak - Poland <adrian.ambroziak@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl_PL\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../column-shortcodes.php:246
+msgid "Select shortcode"
+msgstr "Wybierz układ kolumn"
+
+#: ../column-shortcodes.php:282
+msgid "Column shortcodes"
+msgstr "Skróty kolumn"
+
+#: ../column-shortcodes.php:289
+msgid "Column padding ( optional )"
+msgstr "Odstępy między kolumnami (opcjonalnie)"
+
+#: ../column-shortcodes.php:291
+msgid ""
+"Use the input fields below to customize the padding of your column shortcode."
+msgstr ""
+"Użyj poniższych pól wejściowych, żeby dostosować odstępy w układzie kolumn."
+
+#: ../column-shortcodes.php:292
+msgid "Enter padding first, then select your column shortcode."
+msgstr "Najpierw podaj odstępy, potem wybierz układ kolumn"
+
+#: ../column-shortcodes.php:307
+msgid "reset"
+msgstr "skasuj"
+
+#: ../column-shortcodes.php:335
+msgid "full width"
+msgstr "pełna szerokość"
+
+#: ../column-shortcodes.php:336
+msgid "one half"
+msgstr "jedna druga"
+
+#: ../column-shortcodes.php:337
+msgid "one third"
+msgstr "jedna trzecia"
+
+#: ../column-shortcodes.php:338
+msgid "one fourth"
+msgstr "jedna czwarta"
+
+#: ../column-shortcodes.php:339
+msgid "two third"
+msgstr "dwie trzecie"
+
+#: ../column-shortcodes.php:340
+msgid "three fourth"
+msgstr "trzy czwarte"
+
+#: ../column-shortcodes.php:341
+msgid "one fifth"
+msgstr "jedna piąta"
+
+#: ../column-shortcodes.php:342
+msgid "two fifth"
+msgstr "dwie piąte"
+
+#: ../column-shortcodes.php:343
+msgid "three fifth"
+msgstr "trzy piąte"
+
+#: ../column-shortcodes.php:344
+msgid "four fifth"
+msgstr "cztery piąte"
+
+#: ../column-shortcodes.php:345
+msgid "one sixth"
+msgstr "jedna szósta"
+
+#: ../column-shortcodes.php:373
+msgid "last"
+msgstr "ostatnia kolumna"
