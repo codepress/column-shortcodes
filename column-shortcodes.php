@@ -27,17 +27,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-define( 'CPSH_VERSION', 	'0.6.4' );
+define( 'CPSH_VERSION', 	'0.6.5' );
 define( 'CPSH_URL', 		plugins_url( '', __FILE__ ) );
 define( 'CPSH_TEXTDOMAIN', 	'column-shortcodes' );
 
 // Long posts should require a higher limit, see http://core.trac.wordpress.org/ticket/8553
 @ini_set( 'pcre.backtrack_limit', 500000 );
-
-function tt() {
-	remove_action( 'wp_enqueue_scripts', array( 'Codepress_Column_Shortcodes', 'frontend_styles' ) );
-}
-add_action( 'wp_loaded','tt' );
 
 /**
  * Column Shortcodes
@@ -361,17 +356,18 @@ class Codepress_Column_Shortcodes {
 
 		// define column shortcodes
 		$column_shortcodes = apply_filters( 'cpsh_column_shortcodes', array(
-			'full_width' 	=> array ('display_name' => __('full width', CPSH_TEXTDOMAIN) ),
-			'one_half' 		=> array ('display_name' => __('one half', CPSH_TEXTDOMAIN) ),
-			'one_third' 	=> array ('display_name' => __('one third', CPSH_TEXTDOMAIN) ),
-			'one_fourth' 	=> array ('display_name' => __('one fourth', CPSH_TEXTDOMAIN) ),
-			'two_third' 	=> array ('display_name' => __('two third', CPSH_TEXTDOMAIN) ),
-			'three_fourth' 	=> array ('display_name' => __('three fourth', CPSH_TEXTDOMAIN) ),
-			'one_fifth' 	=> array ('display_name' => __('one fifth', CPSH_TEXTDOMAIN) ),
-			'two_fifth' 	=> array ('display_name' => __('two fifth', CPSH_TEXTDOMAIN) ),
-			'three_fifth' 	=> array ('display_name' => __('three fifth', CPSH_TEXTDOMAIN) ),
-			'four_fifth' 	=> array ('display_name' => __('four fifth', CPSH_TEXTDOMAIN) ),
-			'one_sixth' 	=> array ('display_name' => __('one sixth', CPSH_TEXTDOMAIN) )
+			'full_width' 	=> array( 'display_name' => __('full width', CPSH_TEXTDOMAIN ) ),
+			'one_half' 		=> array( 'display_name' => __('one half', CPSH_TEXTDOMAIN ) ),
+			'one_third' 	=> array( 'display_name' => __('one third', CPSH_TEXTDOMAIN ) ),
+			'one_fourth' 	=> array( 'display_name' => __('one fourth', CPSH_TEXTDOMAIN ) ),
+			'two_third' 	=> array( 'display_name' => __('two third', CPSH_TEXTDOMAIN ) ),
+			'three_fourth' 	=> array( 'display_name' => __('three fourth', CPSH_TEXTDOMAIN ) ),
+			'one_fifth' 	=> array( 'display_name' => __('one fifth', CPSH_TEXTDOMAIN ) ),
+			'two_fifth' 	=> array( 'display_name' => __('two fifth', CPSH_TEXTDOMAIN ) ),
+			'three_fifth' 	=> array( 'display_name' => __('three fifth', CPSH_TEXTDOMAIN ) ),
+			'four_fifth' 	=> array( 'display_name' => __('four fifth', CPSH_TEXTDOMAIN ) ),
+			'one_sixth' 	=> array( 'display_name' => __('one sixth', CPSH_TEXTDOMAIN ) ),
+			'five_sixth' 	=> array( 'display_name' => __('five sixth', CPSH_TEXTDOMAIN ) )
 		));
 
 		if ( ! $column_shortcodes )

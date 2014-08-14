@@ -9,7 +9,8 @@
 .two_fifth,
 .three_fifth,
 .four_fifth,
-.one_sixth {
+.one_sixth,
+.five_sixth {
 	float: right;
 }
 .clear_column {
@@ -55,6 +56,9 @@
 .one_sixth  {
 	width: 16.6%;
 }
+.five_sixth  {
+	width: 83.4%;
+}
 
 /* =Responsive
 -------------------------------------------------------------- */
@@ -70,7 +74,8 @@
 	.two_fifth,
 	.three_fifth,
 	.four_fifth,
-	.one_sixth {
+	.one_sixth,
+	.five_sixth {
 		clear: both;
 		width: 100%;
 		margin-left: 0;

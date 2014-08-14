@@ -3,8 +3,8 @@ Contributors: codepress, tschutter, davidmosterd
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZDZRSYLQ4Z76J
 Tags: columns, column, shortcodes, shortcode, divider, layout, posts, editor, wp-admin, admin, codepress, wordpress
 Requires at least: 3.1
-Tested up to: 3.8
-Stable tag: 0.6.4
+Tested up to: 3.9.2
+Stable tag: 0.6.45
 
 Adds shortcodes to easily create columns in your posts or pages.
 
@@ -27,6 +27,7 @@ There are 10 different column widths available from which you can make all combi
 * three fifth (3/5)
 * four fifth (4/5)
 * one sixth (1/6)
+* five sixth (5/6)
 
 A preset stylesheet is included, which you can also overwrite to you liking in your theme's stylesheet.
 
@@ -73,6 +74,8 @@ You could also type in the shortcode yourself inside the editor. The following s
 [four_fifth_last][/four_fifth_last]
 [one_sixth][/one_sixth]
 [one_sixth_last][/one_sixth_last]
+[five_sixth][/five_sixth]
+[five_sixth_last][/five_sixth_last]
 `
 
 **Another option**
@@ -136,6 +139,7 @@ function hide_column_shortcodes( $shortcodes ) {
 	// unset( $shortcodes['three_fifth'] );
 	// unset( $shortcodes['four_fifth'] );
 	// unset( $shortcodes['one_sixth'] );
+	// unset( $shortcodes['five_sixth'] );
 
 	return $shortcodes;
 }
@@ -257,6 +261,7 @@ You will find a .po file in the languages folder which you can use. You can send
 
 = 0.6.5 =
 * added filter to prevent loading of frontend styles: add_filter( 'cpsh_load_styles', '__return_false' );
+* added 5/6 column;
 
 = 0.6.4 =
 * updated icon for WP3.8
