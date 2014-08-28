@@ -71,10 +71,10 @@ class Codepress_Column_Shortcodes {
 		add_action( 'admin_footer', array( $this, 'popup' ) );
 
 		// styling
+		add_action( 'admin_print_styles', array( $this, 'admin_styles') );
 		if ( ! defined( 'CPSH_LOAD_CSS' ) || CPSH_LOAD_CSS ) {
-			add_action( 'admin_print_styles', array( $this, 'admin_styles') );
+			add_action( 'wp_enqueue_scripts',  array( $this, 'frontend_styles') );
 		}
-		add_action( 'wp_enqueue_scripts',  array( $this, 'frontend_styles') );
 
 		// scripts, only load when editor is available
 		add_filter( 'tiny_mce_plugins', array( $this, 'admin_scripts') );
