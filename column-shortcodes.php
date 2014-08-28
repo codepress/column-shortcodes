@@ -292,6 +292,43 @@ class Codepress_Column_Shortcodes {
 				</a>";
 		}
 
+		if ( apply_filters( 'cpsh_hide_padding_settings', false ) ) :
+
+			$padding_settings = '';
+
+		else :
+
+			$padding_settings = sprintf( '
+			<div class="cpsh-settings">
+				<h2 class="cpsh-title">%s</h2>
+				<p class="description">
+					%s
+					%s
+				</p>
+
+				<div id="preview-padding">
+					<div class="column-container">
+						<div class="column-inner">
+						</div>
+						<div class="padding-fields">
+							<input id="padding-top" placeholder="0" value=""/>
+							<input id="padding-right" placeholder="0" value=""/>
+							<input id="padding-bottom" placeholder="0" value=""/>
+							<input id="padding-left" placeholder="0" value=""/>
+						</div>
+					</div>
+
+					<a class="padding-reset" href="javascript:;">%s</a>
+				</div>
+			</div><!--.cpsh-settings-->',
+			__( "Column padding ( optional )", CPSH_TEXTDOMAIN ),
+			__( "Use the input fields below to customize the padding of your column shortcode.", CPSH_TEXTDOMAIN ),
+			__( "Enter padding first, then select your column shortcode.", CPSH_TEXTDOMAIN ),
+			__( "reset", CPSH_TEXTDOMAIN )
+			);
+
+		endif;
+
 		?>
 
 		<div id="cpsh-wrap" style="display:none">
@@ -305,32 +342,7 @@ class Codepress_Column_Shortcodes {
 							<?php echo $select; ?>
 						</div><!--.cpsh-shortcodes-->
 
-					<?php if ( ! apply_filters( 'cpsh_hide_padding_settings', false ) ) : ?>
-
-						<div class="cpsh-settings">
-							<h2 class="cpsh-title"><?php _e( "Column padding ( optional )", CPSH_TEXTDOMAIN ); ?></h2>
-							<p class="description">
-								<?php _e( "Use the input fields below to customize the padding of your column shortcode.", CPSH_TEXTDOMAIN ); ?>
-								<?php _e( "Enter padding first, then select your column shortcode.", CPSH_TEXTDOMAIN ); ?>
-							</p>
-
-							<div id="preview-padding">
-								<div class="column-container">
-									<div class="column-inner">
-									</div>
-									<div class="padding-fields">
-										<input id="padding-top" placeholder="0" value=""/>
-										<input id="padding-right" placeholder="0" value=""/>
-										<input id="padding-bottom" placeholder="0" value=""/>
-										<input id="padding-left" placeholder="0" value=""/>
-									</div>
-								</div>
-
-								<a class="padding-reset" href="javascript:;"><?php _e( "reset", CPSH_TEXTDOMAIN ); ?></a>
-							</div>
-						</div><!--.cpsh-settings-->
-
-					<?php endif; ?>
+						<?php echo $padding_settings; ?>
 
 					</div><!--cpsh-generator-header-->
 
