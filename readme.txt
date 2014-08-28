@@ -31,6 +31,8 @@ There are 10 different column widths available from which you can make all combi
 
 A preset stylesheet is included, which you can also overwrite to you liking in your theme's stylesheet.
 
+You can integrate the CSS in your theme and put `define( 'CPSH_LOAD_CSS', false );` in wp-config.php.
+
 **Related Links:**
 
 * http://www.codepresshq.com/
