@@ -182,7 +182,9 @@ class Codepress_Column_Shortcodes {
 			}
 
 			// wraps the content in an extra div with padding applied
-			$content = '<div style="' . esc_attr( $padding ) . '">' . $content . '</div>';
+			$content = '<div style="' . esc_attr( $padding ) . '"><p>' . $content . '</p></div>';
+		} else {
+			$content = '<p>'. $content . '</p>';
 		}
 
 		// last class
