@@ -259,6 +259,9 @@ You will find a .po file in the languages folder which you can use. You can send
 
 == Changelog ==
 
+= 0.6.7 =
+* [Fixed] Paragraphs are added to the columns
+
 = 0.6.6 =
 * [Fixed] Swapped images for 5/6 columns
 
