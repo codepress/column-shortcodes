@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: columns, column, shortcodes, shortcode, divider, layout, posts, editor, wp-admin, admin, codepress, wordpress
 Requires at least: 3.1
 Tested up to: 4.6.1
-Stable tag: 0.6.6
+Stable tag: 0.6.7
 
 Adds shortcodes to easily create columns in your posts or pages.
 
