@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: 	Column Shortcodes
-Version: 		0.6.6
+Version: 		0.6.7
 Description: 	Adds shortcodes to easily create columns in your posts or pages
 Author: 		Codepress
 Author URI: 	http://www.codepresshq.com/
@@ -27,7 +27,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-define( 'CPSH_VERSION', '0.6.6' );
+define( 'CPSH_VERSION', '0.6.7' );
 define( 'CPSH_URL', plugins_url( '', __FILE__ ) );
 define( 'CPSH_TEXTDOMAIN', 'column-shortcodes' );
 
@@ -55,7 +55,7 @@ class Codepress_Column_Shortcodes {
 	 */
 	function __construct() {
 
-		add_action( 'wp_loaded', array( $this, 'init') );
+		add_action( 'wp_loaded', array( $this, 'init' ) );
 	}
 
 	/**
@@ -71,11 +71,11 @@ class Codepress_Column_Shortcodes {
 		add_action( 'admin_footer', array( $this, 'popup' ) );
 
 		// styling
-		add_action( 'admin_print_styles', array( $this, 'admin_styles') );
-		add_action( 'wp_enqueue_scripts',  array( $this, 'frontend_styles') );
+		add_action( 'admin_print_styles', array( $this, 'admin_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ) );
 
 		// scripts, only load when editor is available
-		add_filter( 'tiny_mce_plugins', array( $this, 'admin_scripts') );
+		add_filter( 'tiny_mce_plugins', array( $this, 'admin_scripts' ) );
 
 		// translations
 		load_plugin_textdomain( CPSH_TEXTDOMAIN, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -121,9 +121,10 @@ class Codepress_Column_Shortcodes {
 	public function frontend_styles() {
 		if ( apply_filters( 'cpsh_load_styles', true ) ) {
 			if ( ! is_rtl() ) {
-				wp_enqueue_style( 'cpsh-shortcodes', CPSH_URL.'/assets/css/shortcodes.css', array(), CPSH_VERSION, 'all' );
-			} else {
-				wp_enqueue_style( 'cpsh-shortcodes-rtl', CPSH_URL.'/assets/css/shortcodes-rtl.css', array(), CPSH_VERSION, 'all' );
+				wp_enqueue_style( 'cpsh-shortcodes', CPSH_URL . '/assets/css/shortcodes.css', array(), CPSH_VERSION, 'all' );
+			}
+			else {
+				wp_enqueue_style( 'cpsh-shortcodes-rtl', CPSH_URL . '/assets/css/shortcodes-rtl.css', array(), CPSH_VERSION, 'all' );
 			}
 		}
 	}
@@ -147,35 +148,36 @@ class Codepress_Column_Shortcodes {
 	 * @param array $atts
 	 * @param string $content
 	 * @param string $name
+	 *
 	 * @return string $ouput Column HTML output
 	 */
-	function columns( $atts, $content = null, $name='' ) {
+	function columns( $atts, $content = null, $name = '' ) {
 
 		$atts = shortcode_atts( array(
-			"id" 		=> '',
-			"class" 	=> '',
-			"padding"	=> '',
+			"id"      => '',
+			"class"   => '',
+			"padding" => '',
 		), $atts );
 
-		$id		 = sanitize_text_field( $atts['id'] );
-		$class	 = sanitize_text_field( $atts['class'] );
+		$id = sanitize_text_field( $atts['id'] );
+		$class = sanitize_text_field( $atts['class'] );
 		$padding = sanitize_text_field( $atts['padding'] );
 
-		$id		 = ( $id <> '' ) ? " id='" . esc_attr( $id ) . "'" : '';
-		$class	 = ( $class <> '' ) ? esc_attr( ' ' . $class ) : '';
+		$id = ( $id <> '' ) ? " id='" . esc_attr( $id ) . "'" : '';
+		$class = ( $class <> '' ) ? esc_attr( ' ' . $class ) : '';
 
 		$content = $this->content_helper( $content );
 
 		// padding generator
 		if ( $padding <> '' ) {
-			$parts = explode(" ", $padding);
+			$parts = explode( " ", $padding );
 
 			// check for '0' values. if true we will split padding attributes into top,right,bottom and left.
 			if ( $parts && in_array( '0', $parts ) ) {
-				$padding  = !empty( $parts[0] ) ? "padding-top:{$parts[0]};" 	: '';
-				$padding .= !empty( $parts[1] ) ? "padding-right:{$parts[1]};" 	: '';
-				$padding .= !empty( $parts[2] ) ? "padding-bottom:{$parts[2]};"	: '';
-				$padding .= !empty( $parts[3] ) ? "padding-left:{$parts[3]};" 	: '';
+				$padding = ! empty( $parts[0] ) ? "padding-top:{$parts[0]};" : '';
+				$padding .= ! empty( $parts[1] ) ? "padding-right:{$parts[1]};" : '';
+				$padding .= ! empty( $parts[2] ) ? "padding-bottom:{$parts[2]};" : '';
+				$padding .= ! empty( $parts[3] ) ? "padding-left:{$parts[3]};" : '';
 			}
 			else {
 				$padding = "padding:{$padding};";
@@ -183,8 +185,9 @@ class Codepress_Column_Shortcodes {
 
 			// wraps the content in an extra div with padding applied
 			$content = '<div style="' . esc_attr( $padding ) . '"><p>' . $content . '</p></div>';
-		} else {
-			$content = '<p>'. $content . '</p>';
+		}
+		else {
+			$content = '<p>' . $content . '</p>';
 		}
 
 		// last class
@@ -232,8 +235,9 @@ class Codepress_Column_Shortcodes {
 	 * @since 0.4
 	 */
 	private function has_permissions() {
-		if ( current_user_can( 'edit_posts' ) && current_user_can( 'edit_pages' ) )
+		if ( current_user_can( 'edit_posts' ) && current_user_can( 'edit_pages' ) ) {
 			return true;
+		}
 
 		return false;
 	}
@@ -245,11 +249,12 @@ class Codepress_Column_Shortcodes {
 	 */
 	function add_editor_buttons() {
 
-		if ( ! $this->has_permissions() || ! $this->is_edit_screen() )
+		if ( ! $this->has_permissions() || ! $this->is_edit_screen() ) {
 			return false;
+		}
 
 		// add html buttons, when using this filter
-		if( apply_filters( 'add_shortcode_html_buttons', false ) ) {
+		if ( apply_filters( 'add_shortcode_html_buttons', false ) ) {
 			add_action( 'admin_head', array( $this, 'add_html_buttons' ) );
 		}
 
@@ -267,9 +272,9 @@ class Codepress_Column_Shortcodes {
 	 */
 	public function add_shortcode_button( $page = null, $target = null ) {
 		?>
-			<a href="#TB_inline?width=640&amp;height=600&amp;inlineId=cpsh-wrap" class="thickbox button" title="<?php _e( 'Select shortcode', CPSH_TEXTDOMAIN ); ?>" data-page="<?php echo $page; ?>" data-target="<?php echo $target; ?>">
-				<img src="<?php echo CPSH_URL . "/assets/images/shortcode.png";?>" alt="" />
-			</a>
+		<a href="#TB_inline?width=640&amp;height=600&amp;inlineId=cpsh-wrap" class="thickbox button" title="<?php _e( 'Select shortcode', CPSH_TEXTDOMAIN ); ?>" data-page="<?php echo $page; ?>" data-target="<?php echo $target; ?>">
+			<img src="<?php echo CPSH_URL . "/assets/images/shortcode.png"; ?>" alt=""/>
+		</a>
 		<?php
 	}
 
@@ -285,8 +290,8 @@ class Codepress_Column_Shortcodes {
 		$select = '';
 		foreach ( $buttons as $button ) {
 
-			$open_tag 	= str_replace( '\n', '', $button['options']['open_tag'] );
-			$close_tag 	= str_replace( '\n', '', $button['options']['close_tag'] );
+			$open_tag = str_replace( '\n', '', $button['options']['open_tag'] );
+			$close_tag = str_replace( '\n', '', $button['options']['close_tag'] );
 
 			$select .= "
 				<a href='javascript:;' rel='{$open_tag}{$close_tag}' data-tag='{$open_tag}{$close_tag}' class='cp-{$button['class']} columns insert-shortcode'>
@@ -307,32 +312,32 @@ class Codepress_Column_Shortcodes {
 							<?php echo $select; ?>
 						</div><!--.cpsh-shortcodes-->
 
-					<?php if ( ! apply_filters( 'cpsh_hide_padding_settings', false ) ) : ?>
+						<?php if ( ! apply_filters( 'cpsh_hide_padding_settings', false ) ) : ?>
 
-						<div class="cpsh-settings">
-							<h2 class="cpsh-title"><?php _e( "Column padding ( optional )", CPSH_TEXTDOMAIN ); ?></h2>
-							<p class="description">
-								<?php _e( "Use the input fields below to customize the padding of your column shortcode.", CPSH_TEXTDOMAIN ); ?>
-								<?php _e( "Enter padding first, then select your column shortcode.", CPSH_TEXTDOMAIN ); ?>
-							</p>
+							<div class="cpsh-settings">
+								<h2 class="cpsh-title"><?php _e( "Column padding ( optional )", CPSH_TEXTDOMAIN ); ?></h2>
+								<p class="description">
+									<?php _e( "Use the input fields below to customize the padding of your column shortcode.", CPSH_TEXTDOMAIN ); ?>
+									<?php _e( "Enter padding first, then select your column shortcode.", CPSH_TEXTDOMAIN ); ?>
+								</p>
 
-							<div id="preview-padding">
-								<div class="column-container">
-									<div class="column-inner">
+								<div id="preview-padding">
+									<div class="column-container">
+										<div class="column-inner">
+										</div>
+										<div class="padding-fields">
+											<input id="padding-top" placeholder="0" value=""/>
+											<input id="padding-right" placeholder="0" value=""/>
+											<input id="padding-bottom" placeholder="0" value=""/>
+											<input id="padding-left" placeholder="0" value=""/>
+										</div>
 									</div>
-									<div class="padding-fields">
-										<input id="padding-top" placeholder="0" value=""/>
-										<input id="padding-right" placeholder="0" value=""/>
-										<input id="padding-bottom" placeholder="0" value=""/>
-										<input id="padding-left" placeholder="0" value=""/>
-									</div>
+
+									<a class="padding-reset" href="javascript:;"><?php _e( "reset", CPSH_TEXTDOMAIN ); ?></a>
 								</div>
+							</div><!--.cpsh-settings-->
 
-								<a class="padding-reset" href="javascript:;"><?php _e( "reset", CPSH_TEXTDOMAIN ); ?></a>
-							</div>
-						</div><!--.cpsh-settings-->
-
-					<?php endif; ?>
+						<?php endif; ?>
 
 					</div><!--cpsh-generator-header-->
 
@@ -353,55 +358,59 @@ class Codepress_Column_Shortcodes {
 	function get_shortcodes() {
 		static $shortcodes;
 
-		if ( ! empty( $shortcodes ) )
+		if ( ! empty( $shortcodes ) ) {
 			return $shortcodes;
+		}
 
 		// define column shortcodes
 		$column_shortcodes = apply_filters( 'cpsh_column_shortcodes', array(
-			'full_width' 	=> array( 'display_name' => __('full width', CPSH_TEXTDOMAIN ) ),
-			'one_half' 		=> array( 'display_name' => __('one half', CPSH_TEXTDOMAIN ) ),
-			'one_third' 	=> array( 'display_name' => __('one third', CPSH_TEXTDOMAIN ) ),
-			'one_fourth' 	=> array( 'display_name' => __('one fourth', CPSH_TEXTDOMAIN ) ),
-			'two_third' 	=> array( 'display_name' => __('two third', CPSH_TEXTDOMAIN ) ),
-			'three_fourth' 	=> array( 'display_name' => __('three fourth', CPSH_TEXTDOMAIN ) ),
-			'one_fifth' 	=> array( 'display_name' => __('one fifth', CPSH_TEXTDOMAIN ) ),
-			'two_fifth' 	=> array( 'display_name' => __('two fifth', CPSH_TEXTDOMAIN ) ),
-			'three_fifth' 	=> array( 'display_name' => __('three fifth', CPSH_TEXTDOMAIN ) ),
-			'four_fifth' 	=> array( 'display_name' => __('four fifth', CPSH_TEXTDOMAIN ) ),
-			'one_sixth' 	=> array( 'display_name' => __('one sixth', CPSH_TEXTDOMAIN ) ),
-			'five_sixth' 	=> array( 'display_name' => __('five sixth', CPSH_TEXTDOMAIN ) )
-		));
+			'full_width'   => array( 'display_name' => __( 'full width', CPSH_TEXTDOMAIN ) ),
+			'one_half'     => array( 'display_name' => __( 'one half', CPSH_TEXTDOMAIN ) ),
+			'one_third'    => array( 'display_name' => __( 'one third', CPSH_TEXTDOMAIN ) ),
+			'one_fourth'   => array( 'display_name' => __( 'one fourth', CPSH_TEXTDOMAIN ) ),
+			'two_third'    => array( 'display_name' => __( 'two third', CPSH_TEXTDOMAIN ) ),
+			'three_fourth' => array( 'display_name' => __( 'three fourth', CPSH_TEXTDOMAIN ) ),
+			'one_fifth'    => array( 'display_name' => __( 'one fifth', CPSH_TEXTDOMAIN ) ),
+			'two_fifth'    => array( 'display_name' => __( 'two fifth', CPSH_TEXTDOMAIN ) ),
+			'three_fifth'  => array( 'display_name' => __( 'three fifth', CPSH_TEXTDOMAIN ) ),
+			'four_fifth'   => array( 'display_name' => __( 'four fifth', CPSH_TEXTDOMAIN ) ),
+			'one_sixth'    => array( 'display_name' => __( 'one sixth', CPSH_TEXTDOMAIN ) ),
+			'five_sixth'   => array( 'display_name' => __( 'five sixth', CPSH_TEXTDOMAIN ) ),
+		) );
 
-		if ( ! $column_shortcodes )
+		if ( ! $column_shortcodes ) {
 			return array();
+		}
 
 		foreach ( $column_shortcodes as $short => $options ) {
 
 			// add prefix
 			$shortcode = $this->prefix . $short;
 
-			$shortcodes[] =	array(
-				'name' 		=> $shortcode,
-				'class'		=> $short,
-				'options' 	=> array(
-					'display_name' 	=> $options['display_name'],
-					'open_tag' 		=> '\n'."[{$shortcode}]",
-					'close_tag' 	=> "[/{$shortcode}]".'\n',
-					'key' 			=> ''
-				)
+			$shortcodes[] = array(
+				'name'    => $shortcode,
+				'class'   => $short,
+				'options' => array(
+					'display_name' => $options['display_name'],
+					'open_tag'     => '\n' . "[{$shortcode}]",
+					'close_tag'    => "[/{$shortcode}]" . '\n',
+					'key'          => '',
+				),
 			);
 
-			if ( 'full_width' == $short ) continue;
+			if ( 'full_width' == $short ) {
+				continue;
+			}
 
-			$shortcodes[] =	array(
-				'name' 		=> "{$shortcode}_last",
-				'class'		=> "{$short}_last",
-				'options' 	=> array(
-					'display_name' 	=> $options['display_name'] . ' (' . __('last', CPSH_TEXTDOMAIN) . ')',
-					'open_tag' 		=> '\n'."[{$shortcode}_last]",
-					'close_tag' 	=> "[/{$shortcode}_last]".'\n',
-					'key' 			=> ''
-				)
+			$shortcodes[] = array(
+				'name'    => "{$shortcode}_last",
+				'class'   => "{$short}_last",
+				'options' => array(
+					'display_name' => $options['display_name'] . ' (' . __( 'last', CPSH_TEXTDOMAIN ) . ')',
+					'open_tag'     => '\n' . "[{$shortcode}_last]",
+					'close_tag'    => "[/{$shortcode}_last]" . '\n',
+					'key'          => '',
+				),
 			);
 		}
 
@@ -450,6 +459,7 @@ class Codepress_Column_Shortcodes {
 	 * @param string $content
 	 * @param bool $paragraph_tag Filter p-tags
 	 * @param bool $br_tag Filter br-tags
+	 *
 	 * @return string Shortcode
 	 */
 	function content_helper( $content, $paragraph_tag = false, $br_tag = false ) {
