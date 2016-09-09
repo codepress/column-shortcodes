@@ -1,9 +1,9 @@
 === Column Shortcodes ===
-Contributors: codepress, tschutter, davidmosterd
+Contributors: codepress, tschutter, davidmosterd, dungengronovius
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZDZRSYLQ4Z76J
 Tags: columns, column, shortcodes, shortcode, divider, layout, posts, editor, wp-admin, admin, codepress, wordpress
 Requires at least: 3.1
-Tested up to: 4.1
+Tested up to: 4.6.1
 Stable tag: 0.6.6
 
 Adds shortcodes to easily create columns in your posts or pages.
