@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: 	Column Shortcodes
-Version: 		0.6.7
+Version: 		0.6.8
 Description: 	Adds shortcodes to easily create columns in your posts or pages
 Author: 		Codepress
 Author URI: 	http://www.codepresshq.com/
@@ -27,7 +27,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-define( 'CPSH_VERSION', '0.6.7' );
+define( 'CPSH_VERSION', '0.6.8' );
 define( 'CPSH_URL', plugins_url( '', __FILE__ ) );
 define( 'CPSH_TEXTDOMAIN', 'column-shortcodes' );
 
@@ -184,10 +184,10 @@ class Codepress_Column_Shortcodes {
 			}
 
 			// wraps the content in an extra div with padding applied
-			$content = '<div style="' . esc_attr( $padding ) . '"><p>' . $content . '</p></div>';
+			$content = '<div style="' . esc_attr( $padding ) . '">' . wpautop( $content ) . '</div>';
 		}
 		else {
-			$content = '<p>' . $content . '</p>';
+			$content = wpautop( $content );
 		}
 
 		// last class
