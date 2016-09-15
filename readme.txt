@@ -259,6 +259,9 @@ You will find a .po file in the languages folder which you can use. You can send
 
 == Changelog ==
 
+= 0.6.9 =
+* [Fixed] Rollback of the auto paragraphs. Too much conflicts with other shortcodes
+
 = 0.6.8 =
 * [Fixed] use wpautop() to wrap content in paragraphs when needed
 
