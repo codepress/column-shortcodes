@@ -100,17 +100,28 @@ class Codepress_Column_Shortcodes {
 	}
 
 	/**
-	 * Register admin scripts
+	 * Register admin scripts for the editor
 	 *
 	 * @since 0.1
 	 */
-	public function admin_scripts( $plugins ) {
+	public function admin_scripts_tinymce( $plugins ) {
 		if ( $this->has_permissions() && $this->is_edit_screen() ) {
 			wp_enqueue_script( 'cpsh-admin', CPSH_URL . '/assets/js/admin.js', array( 'jquery' ), CPSH_VERSION );
 			wp_enqueue_script( 'jquery-cookie', CPSH_URL . '/assets/js/jquery.ck.js', array( 'jquery' ), CPSH_VERSION );
 		}
 
 		return $plugins;
+	}
+
+	/**
+	 * Register general admin scripts
+	 *
+	 * @since @NEWVERSION
+	 */
+	public function admin_scripts() {
+		if ( $this->is_plugins_screen() && isset( $_GET['cpsh-open-ac'] ) ) {
+			wp_enqueue_script( 'cpsh-admin-plugins', CPSH_URL . '/assets/js/admin-plugins.js', array( 'jquery' ), CPSH_VERSION );
+		}
 	}
 
 	/**
@@ -221,6 +232,21 @@ class Codepress_Column_Shortcodes {
 		$allowed_screens = apply_filters( 'cpsh_allowed_screens', array( 'post-new.php', 'page-new.php', 'post.php', 'page.php', 'profile.php', 'user-edit.php', 'user-new.php' ) );
 
 		if ( in_array( $pagenow, $allowed_screens ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check whether the current screen is the plugins screen
+	 *
+	 * @since @NEWVERSION
+	 */
+	private function is_plugins_screen() {
+		$screen = get_current_screen();
+
+		if ( $screen->base == 'plugin-install' ) {
 			return true;
 		}
 
@@ -390,13 +416,13 @@ class Codepress_Column_Shortcodes {
 							</div>
 						</div><!--cpsh-sidebox-feedback-->
 
-						<?php if ( ! is_plugin_active( 'codepress-admin-columns/codepress-admin-columns.php' ) && ! is_plugin_active( 'admin-columns-pro/admin-columns-pro.php' ) ) : ?>
+						<?php if ( ! is_dir( WP_PLUGIN_DIR . '/codepress-admin-columns' ) && ! is_plugin_active( 'admin-columns-pro/admin-columns-pro.php' ) ) : ?>
 							<div class="sidebox" id="cpsh-sidebox-admin-columns">
 								<div class="padding-box">
 									<div class="inside">
 										<p><?php printf( __( 'Be sure to check out other plugins by Codepress, such as %s. It adds custom columns to your posts, users, comments and media overview. Get more insight in your content now!', CPSH_TEXTDOMAIN ), '<a href="https://wordpress.org/plugins/codepress-admin-columns/" target="_blank">Admin Columns</a>' ); ?></p>
 										<p class="center nopadding">
-											<a href="<?php echo esc_url( admin_url( 'plugin-install.php?s=codepress-admin-columns&tab=search&type=term' ) ); ?>" target="_blank" class="more">
+											<a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=codepress-admin-columns' ) ); ?>" target="_blank" class="more">
 												Download Admin Columns for free!
 											</a>
 										</p>
