@@ -270,7 +270,7 @@ class Codepress_Column_Shortcodes {
 	 */
 	public function add_shortcode_button( $page = null, $target = null ) {
 		?>
-		<a href="#TB_inline?width=640&amp;height=600&amp;inlineId=cpsh-wrap" class="thickbox button" title="<?php _e( 'Select shortcode', CPSH_TEXTDOMAIN ); ?>" data-page="<?php echo $page; ?>" data-target="<?php echo $target; ?>">
+		<a href="#TB_inline?width=753&amp;height=573&amp;inlineId=cpsh-wrap" class="thickbox button" title="<?php _e( 'Select shortcode', CPSH_TEXTDOMAIN ); ?>" data-page="<?php echo $page; ?>" data-target="<?php echo $target; ?>">
 			<img src="<?php echo CPSH_URL . "/assets/images/shortcode.png"; ?>" alt=""/>
 		</a>
 		<?php
@@ -339,9 +339,74 @@ class Codepress_Column_Shortcodes {
 
 					</div><!--cpsh-generator-header-->
 
-				</div><!--cpsh-generator-shell-->
+					<div id="cpsh-generator-sidebar">
+						<div class="sidebox" id="cpsh-sidebox-feedback">
+							<div id="feedback-choice">
+								<h3><?php _e( 'Are you happy with Columns Shortcodes?', CPSH_TEXTDOMAIN ); ?></h3>
 
-				<p class='description'>Checkout <a href="http://www.codepresshq.com">other plugins by Codepress</a>.</p>
+								<div class="inside">
+									<a href="#" class="yes"><?php _e( 'Yes' ); ?></a>
+									<a href="#" class="no"><?php _e( 'No' ); ?></a>
+								</div>
+							</div>
+							<div id="feedback-support">
+								<div class="inside">
+									<p>
+										<?php _e( "What's wrong? Need help? Let us know: please open a support topic on WordPress.org!", CPSH_TEXTDOMAIN ); ?>
+									</p>
+									<ul class="share">
+										<li>
+											<a href="https://wordpress.org/support/plugin/columns-shortcodes" target="_blank">
+												<div class="dashicons dashicons-wordpress"></div> <?php _e( 'Support Forums', CPSH_TEXTDOMAIN ); ?>
+											</a>
+										</li>
+									</ul>
+									<div class="clear"></div>
+								</div>
+							</div>
+							<div id="feedback-rate">
+								<div class="inside">
+									<p>
+										<?php _e( "Woohoo! We're glad to hear that!", CPSH_TEXTDOMAIN ); ?>
+									</p>
+									<p>
+										<?php _e( 'We would really love it if you could show your appreciation by giving us a rating on WordPress.org or tweet about Column Shortcodes!', CPSH_TEXTDOMAIN ); ?>
+									</p>
+									<ul class="share">
+										<li>
+											<a href="http://wordpress.org/support/view/plugin-reviews/column-shortcodes#postform" target="_blank">
+												<div class="dashicons dashicons-star-empty"></div> <?php _e( 'Rate', CPSH_TEXTDOMAIN ); ?>
+											</a>
+										</li>
+
+										<li>
+											<a href="<?php echo esc_url( add_query_arg( array( 'hashtags' => 'admincolumns', 'text' => urlencode( __( "I'm using Column Shortcodes for WordPress!", CPSH_TEXTDOMAIN ) ), 'url' => urlencode( 'http://wordpress.org/plugins/column-shortcodes' ) ), 'https://twitter.com/intent/tweet' ) ); ?>" target="_blank">
+												<div class="dashicons dashicons-twitter"></div> <?php _e( 'Tweet', CPSH_TEXTDOMAIN ); ?>
+											</a>
+										</li>
+									</ul>
+									<div class="clear"></div>
+								</div>
+							</div>
+						</div><!--cpsh-sidebox-feedback-->
+
+						<?php if ( ! is_plugin_active( 'codepress-admin-columns/codepress-admin-columns.php' ) && ! is_plugin_active( 'admin-columns-pro/admin-columns-pro.php' ) ) : ?>
+							<div class="sidebox" id="cpsh-sidebox-admin-columns">
+								<div class="padding-box">
+									<div class="inside">
+										<p><?php printf( __( 'Be sure to check out other plugins by Codepress, such as %s. It adds custom columns to your posts, users, comments and media overview. Get more insight in your content now!', CPSH_TEXTDOMAIN ), '<a href="https://wordpress.org/plugins/codepress-admin-columns/" target="_blank">Admin Columns</a>' ); ?></p>
+										<p class="center nopadding">
+											<a href="<?php echo esc_url( admin_url( 'plugin-install.php?s=codepress-admin-columns&tab=search&type=term' ) ); ?>" target="_blank" class="more">
+												Download Admin Columns for free!
+											</a>
+										</p>
+									</div>
+								</div>
+							</div><!--cpsh-sidebox-admin-columns-->
+						<?php endif; ?>
+					</div><!--cpsh-generator-sidebar-->
+
+				</div><!--cpsh-generator-shell-->
 			</div>
 		</div>
 

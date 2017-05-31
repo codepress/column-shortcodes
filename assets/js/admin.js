@@ -4,7 +4,29 @@
 	{
 		codepressShortcodes();
 		codepressPaddingGenerator();
+		codepressSidebarFeedback();
 	});
+
+	/**
+	 * @since @NEWVERSION
+	 */
+	function codepressSidebarFeedback() {
+		var sidebox = $( '.sidebox#cpsh-sidebox-feedback' );
+
+		sidebox.find( '#feedback-choice a.no' ).click( function( e ) {
+			e.preventDefault();
+
+			sidebox.find( '#feedback-choice' ).slideUp();
+			sidebox.find( '#feedback-support' ).slideDown();
+		} );
+
+		sidebox.find( '#feedback-choice a.yes' ).click( function( e ) {
+			e.preventDefault();
+
+			sidebox.find( '#feedback-choice' ).slideUp();
+			sidebox.find( '#feedback-rate' ).slideDown();
+		} );
+	}
 
 	/**
 	 * Send shortcode to editor
