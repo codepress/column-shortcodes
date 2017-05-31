@@ -356,7 +356,7 @@ class Codepress_Column_Shortcodes {
 									</p>
 									<ul class="share">
 										<li>
-											<a href="https://wordpress.org/support/plugin/column-shortcodes" target="_blank">
+											<a href="https://wordpress.org/support/plugin/column-shortcodes#new-post" target="_blank">
 												<div class="dashicons dashicons-wordpress"></div> <?php _e( 'Support Forums', CPSH_TEXTDOMAIN ); ?>
 											</a>
 										</li>
@@ -374,13 +374,13 @@ class Codepress_Column_Shortcodes {
 									</p>
 									<ul class="share">
 										<li>
-											<a href="http://wordpress.org/support/view/plugin-reviews/column-shortcodes#postform" target="_blank">
+											<a href="http://wordpress.org/support/view/plugin-reviews/column-shortcodes#new-post" target="_blank">
 												<div class="dashicons dashicons-star-empty"></div> <?php _e( 'Rate', CPSH_TEXTDOMAIN ); ?>
 											</a>
 										</li>
 
 										<li>
-											<a href="<?php echo esc_url( add_query_arg( array( 'hashtags' => 'admincolumns', 'text' => urlencode( __( "I'm using Column Shortcodes for WordPress!", CPSH_TEXTDOMAIN ) ), 'url' => urlencode( 'http://wordpress.org/plugins/column-shortcodes' ) ), 'https://twitter.com/intent/tweet' ) ); ?>" target="_blank">
+											<a href="<?php echo esc_url( add_query_arg( array( 'hashtags' => 'columnshortcodes', 'text' => urlencode( __( "I'm using Column Shortcodes for WordPress!", CPSH_TEXTDOMAIN ) ), 'url' => urlencode( 'http://wordpress.org/plugins/column-shortcodes' ) ), 'https://twitter.com/intent/tweet' ) ); ?>" target="_blank">
 												<div class="dashicons dashicons-twitter"></div> <?php _e( 'Tweet', CPSH_TEXTDOMAIN ); ?>
 											</a>
 										</li>
