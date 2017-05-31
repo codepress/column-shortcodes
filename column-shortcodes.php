@@ -356,7 +356,7 @@ class Codepress_Column_Shortcodes {
 									</p>
 									<ul class="share">
 										<li>
-											<a href="https://wordpress.org/support/plugin/columns-shortcodes" target="_blank">
+											<a href="https://wordpress.org/support/plugin/column-shortcodes" target="_blank">
 												<div class="dashicons dashicons-wordpress"></div> <?php _e( 'Support Forums', CPSH_TEXTDOMAIN ); ?>
 											</a>
 										</li>
