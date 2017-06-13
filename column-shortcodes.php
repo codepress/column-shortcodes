@@ -72,6 +72,7 @@ class Codepress_Column_Shortcodes {
 
 		// styling
 		add_action( 'admin_print_styles', array( $this, 'admin_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_plugins_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ) );
 
 		// scripts, only load when editor is available
@@ -108,6 +109,19 @@ class Codepress_Column_Shortcodes {
 		if ( $this->has_permissions() && $this->is_edit_screen() ) {
 			wp_enqueue_script( 'cpsh-admin', CPSH_URL . '/assets/js/admin.js', array( 'jquery' ), CPSH_VERSION );
 			wp_enqueue_script( 'jquery-cookie', CPSH_URL . '/assets/js/jquery.ck.js', array( 'jquery' ), CPSH_VERSION );
+		}
+
+		return $plugins;
+	}
+
+	/**
+	 * Register admin scripts for the plugins page
+	 *
+	 * @since NEWVERSION
+	 */
+	public function admin_plugins_scripts( $plugins ) {
+		if ( $this->is_plugins_screen() ) {
+			wp_enqueue_script( 'cpsh-admin-plugins', CPSH_URL . '/assets/js/plugins.js', array( 'jquery' ), CPSH_VERSION );
 		}
 
 		return $plugins;
@@ -205,6 +219,21 @@ class Codepress_Column_Shortcodes {
 		}
 
 		return $output;
+	}
+
+	/**
+	 * Is edit screen
+	 *
+	 * @since 0.4
+	 */
+	private function is_plugins_screen() {
+		global $pagenow;
+
+		if ( 'plugin-install.php' == $pagenow ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -388,28 +417,30 @@ class Codepress_Column_Shortcodes {
 						</div><!--cpsh-sidebox-feedback-->
 
 						<?php if ( $this->show_banner() ) : ?>
-							<div class="sidebox" id="cpsh-sidebox-admin-columns">
-								<div class="padding-box">
-									<div class="inside">
-										<p class="intro">
-											<?php printf( __( 'Be sure to check out other plugins by Codepress, such as %s. It adds custom columns to your posts, users, comments and media overview in your admin. Get more insight in your content now!', CPSH_TEXTDOMAIN ), '<a href="https://wordpress.org/plugins/codepress-admin-columns/" target="_blank">Admin Columns</a>' ); ?>
-										</p>
-										<a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=codepress-admin-columns' ) ); ?>" target="_blank" class="more-button">
-											<img src="<?php echo CPSH_URL . "/assets/images/ac_vignet_grey.svg"; ?>" alt="" class="more-button__logo"/>
-											<?php _e( 'Download for Free', CPSH_TEXTDOMAIN ); ?>
-										</a>
-										<div class="fivestar">
-											<img src="<?php echo CPSH_URL . "/assets/images/star.svg"; ?>" alt="" class="fivestar__star"/>
-											<img src="<?php echo CPSH_URL . "/assets/images/star.svg"; ?>" alt="" class="fivestar__star"/>
-											<img src="<?php echo CPSH_URL . "/assets/images/star.svg"; ?>" alt="" class="fivestar__star"/>
-											<img src="<?php echo CPSH_URL . "/assets/images/star.svg"; ?>" alt="" class="fivestar__star"/>
-											<img src="<?php echo CPSH_URL . "/assets/images/star.svg"; ?>" alt="" class="fivestar__star"/>
-											<span class="fivestar__count">(<?php echo $this->get_num_ratings(); ?>)</span>
-										</div>
-										<p class="foot">
-											<?php printf( __( "<em>%s</em> Active Installs", CPSH_TEXTDOMAIN ), $this->get_active_installs() . '+', 5 ); ?>
-										</p>
+							<div class="cs-acsidebox">
+								<div class="cs-acsidebox__wrapper">
+									<p class="cs-acsidebox__intro">
+
+										<?php printf( __( 'Be sure to check out other plugins by Codepress, such as %s. It adds custom columns to your posts, users, comments and media overview in your admin. Get more insight in your content now!', CPSH_TEXTDOMAIN ), '<a href="https://wordpress.org/plugins/codepress-admin-columns/" class="cs-acsidebox__link">Admin Columns</a>' ); ?>
+									</p>
+
+									<a href="<?php echo esc_url( admin_url( 'plugin-install.php?s=codepress-admin-columns&tab=search&type=term#install_admin_columns' ) ); ?>" target="_blank" class="cs-acsidebox__button">
+										<img src="<?php echo CPSH_URL . "/assets/images/ac_vignet_grey.svg"; ?>" alt="" class="cs-acsidebox__button__logo"/>
+										<?php _e( 'Download for Free', CPSH_TEXTDOMAIN ); ?>
+									</a>
+
+									<div class="cs-acsidebox__stars">
+										<span class="dashicons dashicons-star-filled"></span>
+										<span class="dashicons dashicons-star-filled"></span>
+										<span class="dashicons dashicons-star-filled"></span>
+										<span class="dashicons dashicons-star-filled"></span>
+										<span class="dashicons dashicons-star-filled"></span>
+										<span class="cs-acsidebox__stars__count">(<?php echo $this->get_num_ratings(); ?>)</span>
 									</div>
+									<p class="cs-acsidebox__footer">
+										<?php printf( __( "<em>%s</em> Active Installs", CPSH_TEXTDOMAIN ), $this->get_active_installs() . '+', 5 ); ?>
+									</p>
+
 								</div>
 							</div><!--cpsh-sidebox-admin-columns-->
 						<?php endif; ?>
