@@ -281,13 +281,45 @@
 	height: 38px;
 	line-height: 38px;
 	background-color: #ffee85;
-	color: #808080;
+	color: #3d4350;
 	text-decoration: none;
-	font-weight: bold;
-	padding-left: 15px;
+	font-weight: 400;
+	padding-left: 10px;
 	padding-right: 15px;
-	margin-bottom: 15px;
+	margin-bottom: 20px;
+	margin-top: 10px;
 }
+#cpsh-sidebox-admin-columns .more-button:hover {
+	background-color: #ffe541;
+}
+#cpsh-sidebox-admin-columns .more-button__logo {
+	height: auto;
+	width: 30px;
+	display: inline-block;
+	margin-top: -3px;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+#cpsh-sidebox-admin-columns .foot em {
+	color: #fff;
+	font-style: normal;
+}
+#cpsh-sidebox-admin-columns .fivestar {
+	white-space: nowrap;
+	margin-bottom: 5px;
+}
+#cpsh-sidebox-admin-columns .fivestar__count {
+	margin-left: 5px;
+}
+#cpsh-sidebox-admin-columns .fivestar__star {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: -3px;
+	margin-right: -1px;
+}
+
 
 #cpsh-sidebox-admin-columns p.foot {
 	color: #acb3c3;

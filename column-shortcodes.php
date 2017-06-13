@@ -122,8 +122,7 @@ class Codepress_Column_Shortcodes {
 		if ( apply_filters( 'cpsh_load_styles', true ) ) {
 			if ( ! is_rtl() ) {
 				wp_enqueue_style( 'cpsh-shortcodes', CPSH_URL . '/assets/css/shortcodes.css', array(), CPSH_VERSION, 'all' );
-			}
-			else {
+			} else {
 				wp_enqueue_style( 'cpsh-shortcodes-rtl', CPSH_URL . '/assets/css/shortcodes-rtl.css', array(), CPSH_VERSION, 'all' );
 			}
 		}
@@ -145,7 +144,7 @@ class Codepress_Column_Shortcodes {
 	 *
 	 * @since 0.1
 	 *
-	 * @param array $atts
+	 * @param array  $atts
 	 * @param string $content
 	 * @param string $name
 	 *
@@ -178,15 +177,13 @@ class Codepress_Column_Shortcodes {
 				$padding .= ! empty( $parts[1] ) ? "padding-right:{$parts[1]};" : '';
 				$padding .= ! empty( $parts[2] ) ? "padding-bottom:{$parts[2]};" : '';
 				$padding .= ! empty( $parts[3] ) ? "padding-left:{$parts[3]};" : '';
-			}
-			else {
+			} else {
 				$padding = "padding:{$padding};";
 			}
 
 			// wraps the content in an extra div with padding applied
 			$content = '<div style="' . esc_attr( $padding ) . '">' . $content . '</div>';
 		}
-
 
 		// last class
 		$pos = strpos( $name, '_last' );
@@ -398,11 +395,19 @@ class Codepress_Column_Shortcodes {
 											<?php printf( __( 'Be sure to check out other plugins by Codepress, such as %s. It adds custom columns to your posts, users, comments and media overview in your admin. Get more insight in your content now!', CPSH_TEXTDOMAIN ), '<a href="https://wordpress.org/plugins/codepress-admin-columns/" target="_blank">Admin Columns</a>' ); ?>
 										</p>
 										<a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=codepress-admin-columns' ) ); ?>" target="_blank" class="more-button">
+											<img src="<?php echo CPSH_URL . "/assets/images/ac_vignet_grey.svg"; ?>" alt="" class="more-button__logo"/>
 											<?php _e( 'Download for Free', CPSH_TEXTDOMAIN ); ?>
 										</a>
+										<div class="fivestar">
+											<img src="<?php echo CPSH_URL . "/assets/images/star.svg"; ?>" alt="" class="fivestar__star"/>
+											<img src="<?php echo CPSH_URL . "/assets/images/star.svg"; ?>" alt="" class="fivestar__star"/>
+											<img src="<?php echo CPSH_URL . "/assets/images/star.svg"; ?>" alt="" class="fivestar__star"/>
+											<img src="<?php echo CPSH_URL . "/assets/images/star.svg"; ?>" alt="" class="fivestar__star"/>
+											<img src="<?php echo CPSH_URL . "/assets/images/star.svg"; ?>" alt="" class="fivestar__star"/>
+											<span class="fivestar__count">(1234)</span>
+										</div>
 										<p class="foot">
-											<?php printf( __( "Proudly powering <strong>%s websites</strong> and achieving <strong>a %s star rating</strong>!", CPSH_TEXTDOMAIN ), '90.000+', 5 ); ?>
-											<span class="5-star"></span>
+											<?php printf( __( "<em>%s</em> Active Installs", CPSH_TEXTDOMAIN ), '90.000+', 5 ); ?>
 										</p>
 									</div>
 								</div>
@@ -524,8 +529,8 @@ class Codepress_Column_Shortcodes {
 	 * @since 0.1
 	 *
 	 * @param string $content
-	 * @param bool $paragraph_tag Filter p-tags
-	 * @param bool $br_tag Filter br-tags
+	 * @param bool   $paragraph_tag Filter p-tags
+	 * @param bool   $br_tag        Filter br-tags
 	 *
 	 * @return string Shortcode
 	 */
