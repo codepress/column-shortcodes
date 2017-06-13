@@ -261,6 +261,7 @@ You will find a .po file in the languages folder which you can use. You can send
 
 = 1.0 =
 * [Fixed] Compatible with WordPress 4.8
+* [Fixed] Padding generator will automatically add 'px' to numbers
 * [Added] Added filter to hide banner `add_filter( 'cpsh_show_banner', '__return_false' );`
 * [Improved] UI improvements for better readability
 

@@ -269,7 +269,7 @@ class Codepress_Column_Shortcodes {
 	 * @since 0.4
 	 */
 	private function has_permissions() {
-		return current_user_can( 'edit_posts' ) && current_user_can( 'edit_pages' );
+		return current_user_can( 'edit_posts' ) || current_user_can( 'edit_pages' );
 	}
 
 	/**
@@ -278,7 +278,6 @@ class Codepress_Column_Shortcodes {
 	 * @since 0.1
 	 */
 	function add_editor_buttons() {
-
 		if ( ! $this->has_permissions() || ! $this->is_edit_screen() ) {
 			return;
 		}
@@ -293,7 +292,7 @@ class Codepress_Column_Shortcodes {
 	}
 
 	/**
-	 * Add shortcode button to TimyMCE
+	 * Add shortcode button to TinyMCE
 	 *
 	 * @since 0.1
 	 *
@@ -308,29 +307,26 @@ class Codepress_Column_Shortcodes {
 		<?php
 	}
 
+	private function display_shortcode_buttons() {
+		foreach ( $this->get_shortcodes() as $button ) {
+			$open_tag = str_replace( '\n', '', $button['options']['open_tag'] );
+			$close_tag = str_replace( '\n', '', $button['options']['close_tag'] );
+
+			?>
+			<a href='javascript:;' rel='<?php echo $open_tag . $close_tag; ?>' data-tag='<?php echo $open_tag . $close_tag; ?>' class='cp-<?php echo $button['class']; ?> columns insert-shortcode'>
+				<?php echo $button['options']['display_name']; ?>
+			</a>
+			<?php
+		}
+	}
+
 	/**
 	 * TB window Popup
 	 *
 	 * @since 0.1
 	 */
 	public function popup() {
-		$buttons = $this->get_shortcodes();
-
-		// buttons
-		$select = '';
-		foreach ( $buttons as $button ) {
-
-			$open_tag = str_replace( '\n', '', $button['options']['open_tag'] );
-			$close_tag = str_replace( '\n', '', $button['options']['close_tag'] );
-
-			$select .= "
-				<a href='javascript:;' rel='{$open_tag}{$close_tag}' data-tag='{$open_tag}{$close_tag}' class='cp-{$button['class']} columns insert-shortcode'>
-					{$button['options']['display_name']}
-				</a>";
-		}
-
 		?>
-
 		<div id="cpsh-wrap" style="display:none">
 			<div id="cpsh">
 				<div id="cpsh-generator-shell">
@@ -339,8 +335,8 @@ class Codepress_Column_Shortcodes {
 
 						<div class="cpsh-shortcodes">
 							<h2 class="cpsh-title"><?php _e( "Column shortcodes", 'column-shortcodes' ); ?></h2>
-							<?php echo $select; ?>
-						</div><!--.cpsh-shortcodes-->
+							<?php $this->display_shortcode_buttons(); ?>
+						</div>
 
 						<?php if ( ! apply_filters( 'cpsh_hide_padding_settings', false ) ) : ?>
 
@@ -509,7 +505,7 @@ class Codepress_Column_Shortcodes {
 				$data = false;
 			}
 
-			set_transient( 'cpsh_plugin_admin_columns_info', $data, DAY_IN_SECONDS * 7 );
+			set_transient( 'cpsh_plugin_admin_columns_info', $data, DAY_IN_SECONDS * 7 ); // 7 day cache
 
 			// Limit request in case API is not responding
 			set_transient( 'cpsh_plugin_timeout', true, HOUR_IN_SECONDS );
@@ -522,7 +518,7 @@ class Codepress_Column_Shortcodes {
 	 * @return string Active install count
 	 */
 	private function get_active_installs() {
-		$active_installs = 90000;
+		$active_installs = 90000; // fallback
 
 		if ( $data = $this->get_plugin_info() ) {
 			$active_installs = $data->active_installs;
@@ -535,7 +531,7 @@ class Codepress_Column_Shortcodes {
 	 * @return string Number of ratings
 	 */
 	private function get_num_ratings() {
-		$active_installs = 730;
+		$active_installs = 730; // fallback
 
 		if ( $data = $this->get_plugin_info() ) {
 			$active_installs = $data->num_ratings;
