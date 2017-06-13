@@ -4,6 +4,7 @@
 		codepressShortcodes();
 		codepressPaddingGenerator();
 		codepressSidebarFeedback();
+		codepressSidebarAdminColumns();
 	} );
 
 	/**
@@ -24,6 +25,22 @@
 
 			sidebox.find( '#feedback-choice' ).slideUp();
 			sidebox.find( '#feedback-rate' ).slideDown();
+		} );
+	}
+
+	/**
+	 * @since @NEWVERSION
+	 */
+	function codepressSidebarAdminColumns() {
+		var sidebox = $( '.sidebox#cpsh-sidebox-admin-columns' );
+
+		sidebox.on( 'click', '.more', function() {
+			//$( '.ac-modal-link' ).trigger( 'click' );
+			$( 'body' ).one( 'thickbox:removed', function() {
+				$( '.ac-modal-link' ).trigger( 'click' );
+			});
+
+			$( this ).parents( '#TB_window' ).find( '.tb-close-icon' ).trigger( 'click' );
 		} );
 	}
 
