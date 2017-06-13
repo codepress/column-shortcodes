@@ -425,7 +425,7 @@ class Codepress_Column_Shortcodes {
 										<?php printf( __( 'Be sure to check out other plugins by Codepress, such as %s. It adds custom columns to your posts, users, comments and media overview in your admin. Get more insight in your content now!', CPSH_TEXTDOMAIN ), '<a href="https://wordpress.org/plugins/codepress-admin-columns/" class="cs-acsidebox__link">Admin Columns</a>' ); ?>
 									</p>
 
-									<a href="<?php echo esc_url( admin_url( 'plugin-install.php?s=codepress-admin-columns&tab=search&type=term#install_admin_columns' ) ); ?>" target="_blank" class="cs-acsidebox__button">
+									<a href="<?php echo esc_url( admin_url( 'plugin-install.php?s=admin-columns&tab=search&type=term#install_admin_columns' ) ); ?>" target="_blank" class="cs-acsidebox__button">
 										<img src="<?php echo CPSH_URL . "/assets/images/ac_vignet_grey.svg"; ?>" alt="" class="cs-acsidebox__button__logo"/>
 										<?php _e( 'Download for Free', CPSH_TEXTDOMAIN ); ?>
 									</a>
@@ -437,7 +437,6 @@ class Codepress_Column_Shortcodes {
 										<span class="dashicons dashicons-star-filled"></span>
 										<span class="dashicons dashicons-star-filled"></span>
 										<span class="cs-acsidebox__stars__count">(<?php echo $this->get_num_ratings(); ?>)</span>
-
 									</div>
 									<p class="cs-acsidebox__footer">
 										<?php printf( __( "%s Active Installs", CPSH_TEXTDOMAIN ), '<em>' . $this->get_active_installs() . '+</em>', 5 ); ?>
