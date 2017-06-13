@@ -394,11 +394,15 @@ class Codepress_Column_Shortcodes {
 							<div class="sidebox" id="cpsh-sidebox-admin-columns">
 								<div class="padding-box">
 									<div class="inside">
-										<p><?php printf( __( 'Be sure to check out other plugins by Codepress, such as %s. It adds custom columns to your posts, users, comments and media overview. Get more insight in your content now!', CPSH_TEXTDOMAIN ), '<a href="https://wordpress.org/plugins/codepress-admin-columns/" target="_blank">Admin Columns</a>' ); ?></p>
-										<p class="center nopadding">
-											<a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=codepress-admin-columns' ) ); ?>" target="_blank" class="more">
-												Download Admin Columns for free!
-											</a>
+										<p>
+											<?php printf( __( 'Be sure to check out other plugins by Codepress, such as %s. It adds custom columns to your posts, users, comments and media overview in your admin. Get more insight in your content now!', CPSH_TEXTDOMAIN ), '<a href="https://wordpress.org/plugins/codepress-admin-columns/" target="_blank">Admin Columns</a>' ); ?>
+										</p>
+										<a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=codepress-admin-columns' ) ); ?>" target="_blank" class="more-button">
+											<?php _e( 'Download for Free', CPSH_TEXTDOMAIN ); ?>
+										</a>
+										<p class="foot">
+											<?php printf( __( "Proudly powering <strong>%s websites</strong> and achieving <strong>a %s star rating</strong>!", CPSH_TEXTDOMAIN ), '90.000+', 5 ); ?>
+											<span class="5-star"></span>
 										</p>
 									</div>
 								</div>
