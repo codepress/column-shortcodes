@@ -387,11 +387,11 @@ class Codepress_Column_Shortcodes {
 							</div>
 						</div><!--cpsh-sidebox-feedback-->
 
-						<?php if ( ! is_dir( WP_PLUGIN_DIR . '/codepress-admin-columns' ) && ! is_plugin_active( 'admin-columns-pro/admin-columns-pro.php' ) ) : ?>
+						<?php if ( $this->show_banner() ) : ?>
 							<div class="sidebox" id="cpsh-sidebox-admin-columns">
 								<div class="padding-box">
 									<div class="inside">
-										<p>
+										<p class="intro">
 											<?php printf( __( 'Be sure to check out other plugins by Codepress, such as %s. It adds custom columns to your posts, users, comments and media overview in your admin. Get more insight in your content now!', CPSH_TEXTDOMAIN ), '<a href="https://wordpress.org/plugins/codepress-admin-columns/" target="_blank">Admin Columns</a>' ); ?>
 										</p>
 										<a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=codepress-admin-columns' ) ); ?>" target="_blank" class="more-button">
@@ -404,10 +404,10 @@ class Codepress_Column_Shortcodes {
 											<img src="<?php echo CPSH_URL . "/assets/images/star.svg"; ?>" alt="" class="fivestar__star"/>
 											<img src="<?php echo CPSH_URL . "/assets/images/star.svg"; ?>" alt="" class="fivestar__star"/>
 											<img src="<?php echo CPSH_URL . "/assets/images/star.svg"; ?>" alt="" class="fivestar__star"/>
-											<span class="fivestar__count">(1234)</span>
+											<span class="fivestar__count">(<?php echo $this->get_num_ratings(); ?>)</span>
 										</div>
 										<p class="foot">
-											<?php printf( __( "<em>%s</em> Active Installs", CPSH_TEXTDOMAIN ), '90.000+', 5 ); ?>
+											<?php printf( __( "<em>%s</em> Active Installs", CPSH_TEXTDOMAIN ), $this->get_active_installs() . '+', 5 ); ?>
 										</p>
 									</div>
 								</div>
@@ -420,6 +420,81 @@ class Codepress_Column_Shortcodes {
 		</div>
 
 		<?php
+	}
+
+	/**
+	 * @return bool True when banner is shown
+	 */
+	private function show_banner() {
+		$show_banner = true;
+
+		// Plugin is already installed
+		if ( class_exists( 'CPAC' ) || class_exists( 'ACP_Full' ) ) {
+			$show_banner = false;
+		}
+
+		return apply_filters( 'cpsh_show_banner', $show_banner );
+	}
+
+	private function get_plugin_info() {
+
+		$data = get_transient( 'cpsh_plugin_admin_columns_info' );
+
+		if ( false === $data && ! get_transient( 'cpsh_plugin_timeout' ) ) {
+
+			include_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
+
+			$plugin = 'codepress-admin-columns';
+
+			$data = plugins_api( 'plugin_information', array(
+				'slug'   => $plugin,
+				'fields' => array(
+					'rating'            => true,
+					'ratings'           => true,
+					'active_installs'   => true,
+					'short_description' => false,
+					'sections'          => false,
+					'requires'          => false,
+					'downloaded'        => false,
+					'last_updated'      => false,
+					'added'             => false,
+					'tags'              => false,
+					'compatibility'     => false,
+					'homepage'          => false,
+					'donate_link'       => false,
+					'versions'          => false,
+				),
+			) );
+
+			if ( $data && ! is_wp_error( $data ) && isset( $data->name ) ) {
+				set_transient( 'cpsh_plugin_admin_columns_info', $data, DAY_IN_SECONDS * 7 );
+			}
+
+			// Limit request in case API is not responding
+			set_transient( 'cpsh_plugin_timeout', HOUR_IN_SECONDS );
+		}
+
+		return $data;
+	}
+
+	private function get_active_installs() {
+		$active_installs = 90000;
+
+		if ( $data = $this->get_plugin_info() ) {
+			$active_installs = $data->active_installs;
+		}
+
+		return number_format( $active_installs );
+	}
+
+	private function get_num_ratings() {
+		$active_installs = 730;
+
+		if ( $data = $this->get_plugin_info() ) {
+			$active_installs = $data->num_ratings;
+		}
+
+		return number_format( $active_installs );
 	}
 
 	/**

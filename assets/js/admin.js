@@ -1,11 +1,10 @@
-(function($) {
+(function( $ ) {
 
-	$(document).ready(function()
-	{
+	$( document ).ready( function() {
 		codepressShortcodes();
 		codepressPaddingGenerator();
 		codepressSidebarFeedback();
-	});
+	} );
 
 	/**
 	 * @since @NEWVERSION
@@ -33,14 +32,14 @@
 	 *
 	 */
 	function codepressShortcodes() {
-		$('#cpsh .insert-shortcode').live('click', function(e) {
+		$( '#cpsh .insert-shortcode' ).live( 'click', function( e ) {
 
-			var shortcode = $(this).attr('rel');
+			var shortcode = $( this ).attr( 'rel' );
 			window.send_to_editor( shortcode );
 
 			e.preventDefault();
 			return false;
-		});
+		} );
 	}
 
 	/**
@@ -49,36 +48,36 @@
 	 */
 	function codepressPaddingGenerator() {
 
-		if ( $('#preview-padding').length === 0 )
+		if ( $( '#preview-padding' ).length === 0 )
 			return;
 
-		var fields = $("#preview-padding .padding-fields input");
+		var fields = $( "#preview-padding .padding-fields input" );
 
 		// init: restore previous settings
-		var positions = ['top', 'right', 'bottom', 'left'];
+		var positions = [ 'top', 'right', 'bottom', 'left' ];
 
 		for ( var p in positions ) {
-			var pos = positions[p];
-			if ( $.cookie('cpsh-' + pos) ) {
-				updatePreviewAndShortcode( pos, $.cookie('cpsh-' + pos) );
+			var pos = positions[ p ];
+			if ( $.cookie( 'cpsh-' + pos ) ) {
+				updatePreviewAndShortcode( pos, $.cookie( 'cpsh-' + pos ) );
 			}
 		}
 
 		// event: user input
-		fields.bind("keyup change", function(e) {
+		fields.bind( "keyup change", function( e ) {
 
-			var value	= $(this).val();
-			var pos		= $(this).attr('id').replace('padding-', '');
+			var value = $( this ).val();
+			var pos = $( this ).attr( 'id' ).replace( 'padding-', '' );
 
 			updatePreviewAndShortcode( pos, value );
-		});
+		} );
 
 		// event: reset all values
-		$('.padding-reset').click( function(e) {
+		$( '.padding-reset' ).click( function( e ) {
 
-			fields.val('').trigger('change');
+			fields.val( '' ).trigger( 'change' );
 			e.preventDefault();
-		});
+		} );
 
 		/**
 		 * Update preview and shortcode
@@ -89,16 +88,16 @@
 			value = suffixPaddingValue( value );
 
 			// inputs
-			if ( ! $('#padding-' + pos).val() )
-				$('#padding-' + pos).val( value );
+			if ( !$( '#padding-' + pos ).val() )
+				$( '#padding-' + pos ).val( value );
 
-			var preview = $('#preview-padding .column-container .column-inner');
+			var preview = $( '#preview-padding .column-container .column-inner' );
 
 			// preview: margins
 			preview.css( 'margin-' + pos, value );
 
 			// preview: hide border when margin is zero
-			if ( '0px' == preview.css( 'margin-' + pos ) ) {
+			if ( '0px' === preview.css( 'margin-' + pos ) ) {
 				preview.css( 'border-' + pos, '0px solid #fff' );
 			}
 			else {
@@ -106,31 +105,31 @@
 			}
 
 			// shortcode attributes
-			var attr_padding	= '';
-			var has_padding		= false;
+			var attr_padding = '';
+			var has_padding = false;
 			for ( var p in positions ) {
 
-				var _input_val	= $( '#padding-' + positions[p] ).val();
-				var attr_val	= '0';
+				var _input_val = $( '#padding-' + positions[ p ] ).val();
+				var attr_val = '0';
 
 				// has padding?
-				if( _input_val !== "" ) {
+				if ( _input_val !== "" ) {
 					attr_val = suffixPaddingValue( _input_val );
 					has_padding = true;
 				}
 
-				attr_padding += ' ' +  attr_val;
+				attr_padding += ' ' + attr_val;
 			}
 
 			// update: shortcode rel
-			$('.cpsh-shortcodes .columns').each( function() {
-				if ( ! has_padding ) {
-					$(this).attr( 'rel', $(this).attr('data-tag') );
+			$( '.cpsh-shortcodes .columns' ).each( function() {
+				if ( !has_padding ) {
+					$( this ).attr( 'rel', $( this ).attr( 'data-tag' ) );
 				}
 				else {
-					$(this).attr( 'rel', $(this).attr('data-tag').replace( '][/', ' padding="' + attr_padding.trim() + '"][/' ) );
+					$( this ).attr( 'rel', $( this ).attr( 'data-tag' ).replace( '][/', ' padding="' + attr_padding.trim() + '"][/' ) );
 				}
-			});
+			} );
 
 			// store settings in cookie
 			$.cookie( 'cpsh-' + pos, value );
@@ -141,7 +140,7 @@
 		 */
 		function suffixPaddingValue( value ) {
 
-			if ( Math.floor( value ) == value && $.isNumeric( value ) ) {
+			if ( ( Math.floor( value ) === value ) && $.isNumeric( value ) ) {
 				value = value + 'px';
 			}
 
@@ -150,4 +149,4 @@
 
 	}
 
-})(jQuery);
+})( jQuery );

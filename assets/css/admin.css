@@ -286,11 +286,10 @@
 	font-weight: 400;
 	padding-left: 10px;
 	padding-right: 15px;
-	margin-bottom: 20px;
-	margin-top: 10px;
+	margin-bottom: 18px;
 }
 #cpsh-sidebox-admin-columns .more-button:hover {
-	background-color: #ffe541;
+	background-color: #fff4af;
 }
 #cpsh-sidebox-admin-columns .more-button__logo {
 	height: auto;
@@ -299,6 +298,12 @@
 	margin-top: -3px;
 	vertical-align: middle;
 	margin-right: 5px;
+}
+#cpsh-sidebox-admin-columns p.intro {
+	margin-bottom: 18px;
+}
+#cpsh-sidebox-admin-columns p.foot {
+	margin-bottom: 0;
 }
 #cpsh-sidebox-admin-columns .foot em {
 	color: #fff;
