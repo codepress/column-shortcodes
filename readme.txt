@@ -3,8 +3,8 @@ Contributors: codepress, tschutter, davidmosterd, dungengronovius
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZDZRSYLQ4Z76J
 Tags: columns, column, shortcodes, shortcode, divider, layout, posts, editor, wp-admin, admin, codepress, wordpress
 Requires at least: 3.1
-Tested up to: 4.8
-Stable tag: 1.0
+Tested up to: 4.6.1
+Stable tag: 0.6.8
 
 Adds shortcodes to easily create columns in your posts or pages.
 
@@ -259,10 +259,6 @@ You will find a .po file in the languages folder which you can use. You can send
 
 == Changelog ==
 
-= 1.0 =
-* [Fixed] Compatible with WordPress 4.8
-* [Added] Added filter to hide banner `add_filter( 'cpsh_show_banner', '__return_false' );`
-
 = 0.6.9 =
 * [Fixed] Rollback of the auto paragraphs. Too much conflicts with other shortcodes
 
@@ -276,7 +272,7 @@ You will find a .po file in the languages folder which you can use. You can send
 * [Fixed] Swapped images for 5/6 columns
 
 = 0.6.5 =
-* added filter to prevent loading of frontend styles: `add_filter( 'cpsh_load_styles', '__return_false' );`
+* added filter to prevent loading of frontend styles: add_filter( 'cpsh_load_styles', '__return_false' );
 * added 5/6 column;
 
 = 0.6.4 =
