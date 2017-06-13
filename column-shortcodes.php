@@ -394,7 +394,7 @@ class Codepress_Column_Shortcodes {
 										<p class="intro">
 											<?php printf( __( 'Be sure to check out other plugins by Codepress, such as %s. It adds custom columns to your posts, users, comments and media overview in your admin. Get more insight in your content now!', CPSH_TEXTDOMAIN ), '<a href="https://wordpress.org/plugins/codepress-admin-columns/" target="_blank">Admin Columns</a>' ); ?>
 										</p>
-										<a href="#" target="_blank" class="more more-button thickbox">
+										<a href="<?php echo esc_url( add_query_arg( array( 'tab' => 'plugin-information', 'plugin' => 'codepress-admin-columns' ), admin_url( 'plugin-install.php' ) ) ); ?>" target="_blank" class="more more-button">
 											<img src="<?php echo CPSH_URL . "/assets/images/ac_vignet_grey.svg"; ?>" alt="" class="more-button__logo"/>
 											<?php _e( 'Download for Free', CPSH_TEXTDOMAIN ); ?>
 										</a>
@@ -418,14 +418,6 @@ class Codepress_Column_Shortcodes {
 				</div><!--cpsh-generator-shell-->
 			</div>
 		</div>
-
-		<a href="<?php echo esc_url( add_query_arg( array(
-			'tab' => 'plugin-information',
-			'plugin' => 'codepress-admin-columns',
-			'TB_iframe' => 'true',
-			'width' => 772,
-			'height' => 636,
-		), admin_url( 'plugin-install.php' ) ) ); ?>" class="thickbox ac-modal-link hidden"></a>
 
 		<?php
 	}
