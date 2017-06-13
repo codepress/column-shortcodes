@@ -85,6 +85,7 @@ class Codepress_Column_Shortcodes {
 	}
 
 	/**
+	 * @param string $file
 	 * @since 3.0
 	 */
 	private function get_plugin_version( $file ) {
@@ -122,6 +123,7 @@ class Codepress_Column_Shortcodes {
 	/**
 	 * Register admin scripts for the editor
 	 *
+	 * @param array $plugins
 	 * @since 0.1
 	 */
 	public function admin_scripts( $plugins ) {
@@ -138,12 +140,10 @@ class Codepress_Column_Shortcodes {
 	 *
 	 * @since NEWVERSION
 	 */
-	public function admin_plugins_scripts( $plugins ) {
+	public function admin_plugins_scripts() {
 		if ( $this->is_plugins_screen() ) {
 			wp_enqueue_script( 'cpsh-admin-plugins', $this->get_url() . '/assets/js/plugins.js', array( 'jquery' ), $this->get_version() );
 		}
-
-		return $plugins;
 	}
 
 	/**
@@ -615,14 +615,12 @@ class Codepress_Column_Shortcodes {
 	function add_html_buttons() {
 		wp_print_scripts( 'quicktags' );
 
-		$shortcodes = $this->get_shortcodes();
-
 		// output script
-		$script = '';
-		foreach ( $shortcodes as $shortcode ) {
+		$script_buttons = array();
+		foreach ( $this->get_shortcodes() as $shortcode ) {
 			$options = $shortcode['options'];
 
-			$script .= "edButtons[edButtons.length] = new edButton('ed_{$shortcode['name']}'
+			$script_buttons[] = "edButtons[edButtons.length] = new edButton('ed_{$shortcode['name']}'
 				,'{$shortcode['name']}'
 				,'{$options['open_tag']}'
 				,'{$options['close_tag']}'
@@ -630,15 +628,11 @@ class Codepress_Column_Shortcodes {
 			); \n";
 		}
 
-		$script = "
-			<script type='text/javascript'>\n
-				/* <![CDATA[ */ \n
-				{$script}
-				\n /* ]]> */ \n
-			</script>
-		";
-
-		echo $script;
+		?>
+		<script type='text/javascript'>
+			<?php echo implode( $script_buttons ); ?>
+		</script>
+		<?php
 	}
 
 	/**
