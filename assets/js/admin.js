@@ -64,12 +64,21 @@
 		}
 
 		// event: user input
-		fields.bind( "keyup change", function( e ) {
+		fields.bind( "keyup change", function() {
 
 			var value = $( this ).val();
 			var pos = $( this ).attr( 'id' ).replace( 'padding-', '' );
 
 			updatePreviewAndShortcode( pos, value );
+		} );
+
+		fields.on( 'blur', function() {
+			var value = $( this ).val();
+			var isnum = /^\d+$/.test( value );
+
+			if ( isnum ) {
+				$( this ).val( value + 'px' ).trigger( 'change' );
+			}
 		} );
 
 		// event: reset all values
@@ -84,12 +93,12 @@
 		 *
 		 */
 		function updatePreviewAndShortcode( pos, value ) {
-
+			var $field = $( '#padding-' + pos );
 			value = suffixPaddingValue( value );
 
 			// inputs
-			if ( !$( '#padding-' + pos ).val() )
-				$( '#padding-' + pos ).val( value );
+			if ( !$field.val() )
+				$field.val( value );
 
 			var preview = $( '#preview-padding .column-container .column-inner' );
 

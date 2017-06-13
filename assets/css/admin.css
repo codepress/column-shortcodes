@@ -475,17 +475,20 @@
 
 #preview-padding .padding-fields input {
 	position: absolute;
-	width: 34px;
+	width: 44px;
 	border: 1px solid #DFDFDF;
 	border-radius: 3px 3px 3px 3px;
 	margin: 0;
+	font-size: 13px;
 	text-align: center;
+	padding-left: 2px;
+	padding-right: 2px;
 }
 
 #preview-padding .padding-fields input#padding-top {
 	top: 10px;
 	left: 50%;
-	margin-left: -17px;
+	margin-left: -22px;
 }
 
 #preview-padding .padding-fields input#padding-right {
@@ -497,7 +500,7 @@
 #preview-padding .padding-fields input#padding-bottom {
 	bottom: 10px;
 	left: 50%;
-	margin-left: -17px;
+	margin-left: -22px;
 }
 
 #preview-padding .padding-fields input#padding-left {

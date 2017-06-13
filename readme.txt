@@ -262,6 +262,7 @@ You will find a .po file in the languages folder which you can use. You can send
 = 1.0 =
 * [Fixed] Compatible with WordPress 4.8
 * [Added] Added filter to hide banner `add_filter( 'cpsh_show_banner', '__return_false' );`
+* [Improved] UI improvements for better readability
 
 = 0.6.9 =
 * [Fixed] Rollback of the auto paragraphs. Too much conflicts with other shortcodes
