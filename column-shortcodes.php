@@ -407,7 +407,7 @@ class Codepress_Column_Shortcodes {
 											<span class="fivestar__count">(<?php echo $this->get_num_ratings(); ?>)</span>
 										</div>
 										<p class="foot">
-											<?php printf( __( "<em>%s</em> Active Installs", CPSH_TEXTDOMAIN ), $this->get_active_installs() . '+', 5 ); ?>
+											<?php printf( __( "%s Active Installs", CPSH_TEXTDOMAIN ), '<em>' . $this->get_active_installs() . '+</em>', 5 ); ?>
 										</p>
 									</div>
 								</div>
