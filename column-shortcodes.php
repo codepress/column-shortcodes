@@ -394,7 +394,7 @@ class Codepress_Column_Shortcodes {
 										<p class="intro">
 											<?php printf( __( 'Be sure to check out other plugins by Codepress, such as %s. It adds custom columns to your posts, users, comments and media overview in your admin. Get more insight in your content now!', CPSH_TEXTDOMAIN ), '<a href="https://wordpress.org/plugins/codepress-admin-columns/" target="_blank">Admin Columns</a>' ); ?>
 										</p>
-										<a href="<?php echo esc_url( admin_url( 'plugin-install.php?tab=plugin-information&plugin=codepress-admin-columns' ) ); ?>" target="_blank" class="more-button">
+										<a href="<?php echo esc_url( add_query_arg( array( 'tab' => 'plugin-information', 'plugin' => 'codepress-admin-columns' ), admin_url( 'plugin-install.php' ) ) ); ?>" target="_blank" class="more more-button">
 											<img src="<?php echo CPSH_URL . "/assets/images/ac_vignet_grey.svg"; ?>" alt="" class="more-button__logo"/>
 											<?php _e( 'Download for Free', CPSH_TEXTDOMAIN ); ?>
 										</a>
@@ -436,8 +436,10 @@ class Codepress_Column_Shortcodes {
 		return apply_filters( 'cpsh_show_banner', $show_banner );
 	}
 
+	/**
+	 * @return false|stdClass Plugin info object
+	 */
 	private function get_plugin_info() {
-
 		$data = get_transient( 'cpsh_plugin_admin_columns_info' );
 
 		if ( false === $data && ! get_transient( 'cpsh_plugin_timeout' ) ) {
@@ -466,17 +468,22 @@ class Codepress_Column_Shortcodes {
 				),
 			) );
 
-			if ( $data && ! is_wp_error( $data ) && isset( $data->name ) ) {
-				set_transient( 'cpsh_plugin_admin_columns_info', $data, DAY_IN_SECONDS * 7 );
+			if ( empty( $data ) || is_wp_error( $data ) || ! isset( $data->name ) ) {
+				$data = false;
 			}
 
+			set_transient( 'cpsh_plugin_admin_columns_info', $data, DAY_IN_SECONDS * 7 );
+
 			// Limit request in case API is not responding
-			set_transient( 'cpsh_plugin_timeout', HOUR_IN_SECONDS );
+			set_transient( 'cpsh_plugin_timeout', true, HOUR_IN_SECONDS );
 		}
 
 		return $data;
 	}
 
+	/**
+	 * @return string Active install count
+	 */
 	private function get_active_installs() {
 		$active_installs = 90000;
 
@@ -487,6 +494,9 @@ class Codepress_Column_Shortcodes {
 		return number_format( $active_installs );
 	}
 
+	/**
+	 * @return string Number of ratings
+	 */
 	private function get_num_ratings() {
 		$active_installs = 730;
 
