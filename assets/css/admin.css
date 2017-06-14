@@ -338,6 +338,10 @@
 	color: #fff;
 }
 
+.cs-acsidebox__link:focus {
+	color: #0073aa;
+}
+
 /* =Shortcodes
 -------------------------------------------------------------- */
 #cpsh .cpsh-shortcodes {

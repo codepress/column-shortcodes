@@ -6,7 +6,7 @@ Version: 		1.0
 Description: 	Adds shortcodes to easily create columns in your posts or pages
 Author: 		Codepress
 Author URI: 	https://www.admincolumns.com/
-Plugin URI: 	http://www.codepresshq.com/wordpress-plugins/shortcode-columns/
+Plugin URI: 	https://wordpress.org/plugins/column-shortcodes
 Text Domain: 	column-shortcodes
 Domain Path: 	/languages
 License:		GPLv2
@@ -62,6 +62,9 @@ class Codepress_Column_Shortcodes {
 		add_filter( 'tiny_mce_plugins', array( $this, 'admin_scripts' ) );
 	}
 
+	/**
+	 * @since 1.0
+	 */
 	public function translations() {
 		load_plugin_textdomain( 'column-shortcodes', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
@@ -69,7 +72,7 @@ class Codepress_Column_Shortcodes {
 	/**
 	 * @return string
 	 */
-	public function get_url() {
+	private function get_url() {
 		return plugin_dir_url( __FILE__ );
 	}
 
@@ -86,6 +89,7 @@ class Codepress_Column_Shortcodes {
 
 	/**
 	 * @param string $file
+	 *
 	 * @since 3.0
 	 */
 	private function get_plugin_version( $file ) {
@@ -124,6 +128,7 @@ class Codepress_Column_Shortcodes {
 	 * Register admin scripts for the editor
 	 *
 	 * @param array $plugins
+	 *
 	 * @since 0.1
 	 */
 	public function admin_scripts( $plugins ) {
@@ -138,7 +143,7 @@ class Codepress_Column_Shortcodes {
 	/**
 	 * Register admin scripts for the plugins page
 	 *
-	 * @since NEWVERSION
+	 * @since 1.0
 	 */
 	public function admin_plugins_scripts() {
 		if ( $this->is_plugins_screen() ) {
@@ -153,10 +158,10 @@ class Codepress_Column_Shortcodes {
 	 */
 	public function frontend_styles() {
 		if ( apply_filters( 'cpsh_load_styles', true ) ) {
-			if ( ! is_rtl() ) {
-				wp_enqueue_style( 'cpsh-shortcodes', $this->get_url() . '/assets/css/shortcodes.css', array(), $this->get_version(), 'all' );
-			} else {
+			if ( is_rtl() ) {
 				wp_enqueue_style( 'cpsh-shortcodes-rtl', $this->get_url() . '/assets/css/shortcodes-rtl.css', array(), $this->get_version(), 'all' );
+			} else {
+				wp_enqueue_style( 'cpsh-shortcodes', $this->get_url() . '/assets/css/shortcodes.css', array(), $this->get_version(), 'all' );
 			}
 		}
 	}
@@ -183,7 +188,7 @@ class Codepress_Column_Shortcodes {
 	 *
 	 * @return string Column HTML output
 	 */
-	function columns( $atts, $content = null, $name = '' ) {
+	public function columns( $atts, $content = null, $name = '' ) {
 
 		$atts = shortcode_atts( array(
 			"id"      => '',
@@ -277,18 +282,15 @@ class Codepress_Column_Shortcodes {
 	 *
 	 * @since 0.1
 	 */
-	function add_editor_buttons() {
-		if ( ! $this->has_permissions() || ! $this->is_edit_screen() ) {
-			return;
-		}
+	public function add_editor_buttons() {
+		if ( $this->has_permissions() && $this->is_edit_screen() ) {
 
-		// add html buttons, when using this filter
-		if ( apply_filters( 'add_shortcode_html_buttons', false ) ) {
-			add_action( 'admin_head', array( $this, 'add_html_buttons' ) );
-		}
+			if ( apply_filters( 'add_shortcode_html_buttons', false ) ) {
+				add_action( 'admin_head', array( $this, 'add_html_buttons' ) );
+			}
 
-		// add shortcode button
-		add_action( 'media_buttons', array( $this, 'add_shortcode_button' ), 100 );
+			add_action( 'media_buttons', array( $this, 'add_shortcode_button' ), 100 );
+		}
 	}
 
 	/**
@@ -307,14 +309,17 @@ class Codepress_Column_Shortcodes {
 		<?php
 	}
 
+	/**
+	 * @since 1.0
+	 */
 	private function display_shortcode_buttons() {
 		foreach ( $this->get_shortcodes() as $button ) {
 			$open_tag = str_replace( '\n', '', $button['options']['open_tag'] );
 			$close_tag = str_replace( '\n', '', $button['options']['close_tag'] );
 
 			?>
-			<a href='javascript:;' rel='<?php echo $open_tag . $close_tag; ?>' data-tag='<?php echo $open_tag . $close_tag; ?>' class='cp-<?php echo $button['class']; ?> columns insert-shortcode'>
-				<?php echo $button['options']['display_name']; ?>
+			<a href='javascript:;' rel='<?php echo esc_attr( $open_tag . $close_tag ); ?>' data-tag='<?php echo esc_attr( $open_tag . $close_tag ); ?>' class='cp-<?php echo esc_attr( $button['class'] ); ?> columns insert-shortcode'>
+				<?php echo esc_html( $button['options']['display_name'] ); ?>
 			</a>
 			<?php
 		}
@@ -408,7 +413,7 @@ class Codepress_Column_Shortcodes {
 										</li>
 
 										<li>
-											<a href="<?php echo esc_url( add_query_arg( array( 'hashtags' => 'columnshortcodes', 'text' => urlencode( __( "I'm using Column Shortcodes for WordPress!", 'column-shortcodes' ) ), 'url' => urlencode( 'http://wordpress.org/plugins/column-shortcodes' ) ), 'https://twitter.com/intent/tweet' ) ); ?>" target="_blank">
+											<a href="<?php echo esc_url( add_query_arg( array( 'hashtags' => 'columnshortcodes', 'text' => urlencode( __( "I'm using Column Shortcodes for WordPress!", 'column-shortcodes' ) ), 'url' => urlencode( 'https://wordpress.org/plugins/column-shortcodes' ) ), 'https://twitter.com/intent/tweet' ) ); ?>" target="_blank">
 												<div class="dashicons dashicons-twitter"></div> <?php _e( 'Tweet', 'column-shortcodes' ); ?>
 											</a>
 										</li>
@@ -423,26 +428,21 @@ class Codepress_Column_Shortcodes {
 							<div class="cs-acsidebox">
 								<div class="cs-acsidebox__wrapper">
 									<p class="cs-acsidebox__intro">
-										<?php printf( __( 'Be sure to check out other plugins by Codepress, such as %s. It adds custom columns to your posts, users, comments and media overview in your admin. Get more insight in your content now!', 'column-shortcodes' ), '<a href="https://wordpress.org/plugins/codepress-admin-columns/" class="cs-acsidebox__link">Admin Columns</a>' ); ?>
+										<?php printf( __( 'Be sure to check out other plugins by Codepress, such as %s. It adds custom columns to your posts, users, comments and media overview in your admin. Get more insight in your content now!', 'column-shortcodes' ), '<a target="_blank" href="https://wordpress.org/plugins/codepress-admin-columns/" class="cs-acsidebox__link">Admin Columns</a>' ); ?>
 									</p>
-
 									<a href="<?php echo esc_url( add_query_arg( array( 's' => 'Admin Columns', 'tab' => 'search', 'type' => 'term' ), admin_url( 'plugin-install.php' ) ) ); ?>#install_admin_columns" target="_blank" class="cs-acsidebox__button">
 										<img src="<?php echo $this->get_url() . "/assets/images/ac_vignet_grey.svg"; ?>" alt="" class="cs-acsidebox__button__logo"/>
 										<?php _e( 'Download for Free', 'column-shortcodes' ); ?>
 									</a>
-
 									<div class="cs-acsidebox__stars">
-										<span class="dashicons dashicons-star-filled"></span>
-										<span class="dashicons dashicons-star-filled"></span>
-										<span class="dashicons dashicons-star-filled"></span>
-										<span class="dashicons dashicons-star-filled"></span>
-										<span class="dashicons dashicons-star-filled"></span>
+										<?php for ( $i = 1; $i <= 5; $i++ ) : ?>
+											<span class="dashicons dashicons-star-filled"></span>
+										<?php endfor; ?>
 										<span class="cs-acsidebox__stars__count">(<?php echo $this->get_num_ratings(); ?>)</span>
 									</div>
 									<p class="cs-acsidebox__footer">
-										<?php printf( __( "%s Active Installs", 'column-shortcodes' ), '<em>' . $this->get_active_installs() . '+</em>', 5 ); ?>
+										<?php printf( __( "%s Active Installs", 'column-shortcodes' ), '<em>' . $this->get_active_installs() . '+</em>' ); ?>
 									</p>
-
 								</div>
 							</div><!--cpsh-sidebox-admin-columns-->
 						<?php endif; ?>
@@ -479,10 +479,8 @@ class Codepress_Column_Shortcodes {
 
 			include_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 
-			$plugin = 'codepress-admin-columns';
-
-			$data = plugins_api( 'plugin_information', array(
-				'slug'   => $plugin,
+			$info = plugins_api( 'plugin_information', array(
+				'slug'   => 'codepress-admin-columns',
 				'fields' => array(
 					'rating'            => true,
 					'ratings'           => true,
@@ -501,14 +499,14 @@ class Codepress_Column_Shortcodes {
 				),
 			) );
 
-			if ( empty( $data ) || is_wp_error( $data ) || ! isset( $data->name ) ) {
-				$data = false;
+			if ( $info && ! is_wp_error( $info ) && isset( $info->name ) ) {
+				set_transient( 'cpsh_plugin_admin_columns_info', $info, DAY_IN_SECONDS * 7 ); // 7 day cache
+
+				$data = $info;
 			}
 
-			set_transient( 'cpsh_plugin_admin_columns_info', $data, DAY_IN_SECONDS * 7 ); // 7 day cache
-
 			// Limit request in case API is not responding
-			set_transient( 'cpsh_plugin_timeout', true, HOUR_IN_SECONDS );
+			set_transient( 'cpsh_plugin_timeout', true, HOUR_IN_SECONDS * 4 ); // 4 hours
 		}
 
 		return $data;
@@ -545,14 +543,9 @@ class Codepress_Column_Shortcodes {
 	 *
 	 * @since 0.1
 	 */
-	function get_shortcodes() {
-		static $shortcodes;
+	private function get_shortcodes() {
+		$shortcodes = array();
 
-		if ( ! empty( $shortcodes ) ) {
-			return $shortcodes;
-		}
-
-		// define column shortcodes
 		$column_shortcodes = apply_filters( 'cpsh_column_shortcodes', array(
 			'full_width'   => array( 'display_name' => __( 'full width', 'column-shortcodes' ) ),
 			'one_half'     => array( 'display_name' => __( 'one half', 'column-shortcodes' ) ),
@@ -567,10 +560,6 @@ class Codepress_Column_Shortcodes {
 			'one_sixth'    => array( 'display_name' => __( 'one sixth', 'column-shortcodes' ) ),
 			'five_sixth'   => array( 'display_name' => __( 'five sixth', 'column-shortcodes' ) ),
 		) );
-
-		if ( ! $column_shortcodes ) {
-			return array();
-		}
 
 		foreach ( $column_shortcodes as $short => $options ) {
 
@@ -588,7 +577,7 @@ class Codepress_Column_Shortcodes {
 				),
 			);
 
-			if ( 'full_width' == $short ) {
+			if ( 'full_width' === $short ) {
 				continue;
 			}
 
@@ -612,7 +601,7 @@ class Codepress_Column_Shortcodes {
 	 *
 	 * @since 0.1
 	 */
-	function add_html_buttons() {
+	public function add_html_buttons() {
 		wp_print_scripts( 'quicktags' );
 
 		// output script
@@ -646,7 +635,7 @@ class Codepress_Column_Shortcodes {
 	 *
 	 * @return string Shortcode
 	 */
-	function content_helper( $content, $paragraph_tag = false, $br_tag = false ) {
+	private function content_helper( $content, $paragraph_tag = false, $br_tag = false ) {
 		$content = preg_replace( '#^<\/p>|^<br \/>|<p>$#', '', $content );
 
 		if ( $br_tag ) {
