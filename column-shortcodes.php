@@ -116,10 +116,10 @@ class Codepress_Column_Shortcodes {
 	 */
 	public function admin_styles() {
 		if ( $this->has_permissions() && $this->is_edit_screen() ) {
-			wp_enqueue_style( 'cpsh-admin', $this->get_url() . '/assets/css/admin.css', array(), $this->get_version(), 'all' );
+			wp_enqueue_style( 'cpsh-admin', $this->get_url() . 'assets/css/admin.css', array(), $this->get_version(), 'all' );
 
 			if ( is_rtl() ) {
-				wp_enqueue_style( 'cpsh-admin-rtl', $this->get_url() . '/assets/css/admin-rtl.css', array(), $this->get_version(), 'all' );
+				wp_enqueue_style( 'cpsh-admin-rtl', $this->get_url() . 'assets/css/admin-rtl.css', array(), $this->get_version(), 'all' );
 			}
 		}
 	}
@@ -133,8 +133,8 @@ class Codepress_Column_Shortcodes {
 	 */
 	public function admin_scripts( $plugins ) {
 		if ( $this->has_permissions() && $this->is_edit_screen() ) {
-			wp_enqueue_script( 'cpsh-admin', $this->get_url() . '/assets/js/admin.js', array( 'jquery' ), $this->get_version() );
-			wp_enqueue_script( 'jquery-cookie', $this->get_url() . '/assets/js/jquery.ck.js', array( 'jquery' ), $this->get_version() );
+			wp_enqueue_script( 'cpsh-admin', $this->get_url() . 'assets/js/admin.js', array( 'jquery' ), $this->get_version() );
+			wp_enqueue_script( 'jquery-cookie', $this->get_url() . 'assets/js/jquery.ck.js', array( 'jquery' ), $this->get_version() );
 		}
 
 		return $plugins;
@@ -147,7 +147,7 @@ class Codepress_Column_Shortcodes {
 	 */
 	public function admin_plugins_scripts() {
 		if ( $this->is_plugins_screen() ) {
-			wp_enqueue_script( 'cpsh-admin-plugins', $this->get_url() . '/assets/js/plugins.js', array( 'jquery' ), $this->get_version() );
+			wp_enqueue_script( 'cpsh-admin-plugins', $this->get_url() . 'assets/js/plugins.js', array( 'jquery' ), $this->get_version() );
 		}
 	}
 
@@ -159,9 +159,9 @@ class Codepress_Column_Shortcodes {
 	public function frontend_styles() {
 		if ( apply_filters( 'cpsh_load_styles', true ) ) {
 			if ( is_rtl() ) {
-				wp_enqueue_style( 'cpsh-shortcodes-rtl', $this->get_url() . '/assets/css/shortcodes-rtl.css', array(), $this->get_version(), 'all' );
+				wp_enqueue_style( 'cpsh-shortcodes-rtl', $this->get_url() . 'assets/css/shortcodes-rtl.css', array(), $this->get_version(), 'all' );
 			} else {
-				wp_enqueue_style( 'cpsh-shortcodes', $this->get_url() . '/assets/css/shortcodes.css', array(), $this->get_version(), 'all' );
+				wp_enqueue_style( 'cpsh-shortcodes', $this->get_url() . 'assets/css/shortcodes.css', array(), $this->get_version(), 'all' );
 			}
 		}
 	}
