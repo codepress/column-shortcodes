@@ -32,7 +32,7 @@
 	 *
 	 */
 	function codepressShortcodes() {
-		$( '#cpsh .insert-shortcode' ).live( 'click', function( e ) {
+		$( '#cpsh .insert-shortcode' ).on( 'click', function( e ) {
 
 			var shortcode = $( this ).attr( 'rel' );
 			window.send_to_editor( shortcode );

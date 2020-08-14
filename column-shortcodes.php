@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: 	Column Shortcodes
-Version: 		1.0
+Version: 		1.0.1
 Description: 	Adds shortcodes to easily create columns in your posts or pages
 Author: 		Codepress
 Author URI: 	https://www.admincolumns.com/

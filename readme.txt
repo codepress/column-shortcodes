@@ -2,9 +2,9 @@
 Contributors: codepress, tschutter, davidmosterd, dungengronovius
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZDZRSYLQ4Z76J
 Tags: columns, column, shortcodes, shortcode, divider, layout, posts, editor, wp-admin, admin, codepress, wordpress
-Requires at least: 3.1
-Tested up to: 4.8
-Stable tag: 1.0
+Requires at least: 4.8
+Tested up to: 5.5
+Stable tag: 1.0.1
 
 Adds shortcodes to easily create columns in your posts or pages.
 
@@ -259,8 +259,11 @@ You will find a .po file in the languages folder which you can use. You can send
 
 == Changelog ==
 
+= 1.0.1 =
+* [Fixed] Hotfix for WordPress 5.5
+
 = 1.0 =
-* [Fixed] Compatible with WordPress 4.8
+* [Fixed] Compatible with WordPress 4.8 and up
 * [Fixed] Padding generator will automatically add 'px' to numbers
 * [Added] Added filter to hide banner `add_filter( 'cpsh_show_banner', '__return_false' );`
 * [Improved] UI improvements for better readability
