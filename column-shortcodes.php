@@ -11,7 +11,7 @@ Text Domain: 	column-shortcodes
 Domain Path: 	/languages
 License:		GPLv2
 
-Copyright 2011-2017  Codepress  info@codepress.nl
+Copyright 2011-2023  Codepress  info@codepress.nl
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License version 2 as published by

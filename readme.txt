@@ -3,7 +3,7 @@ Contributors: codepress, tschutter, davidmosterd, dungengronovius
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZDZRSYLQ4Z76J
 Tags: columns, column, shortcodes, shortcode, divider, layout, posts, editor, wp-admin, admin, codepress, wordpress
 Requires at least: 4.8
-Tested up to: 5.5
+Tested up to: 6.0.2
 Stable tag: 1.0.1
 
 Adds shortcodes to easily create columns in your posts or pages.
@@ -248,7 +248,6 @@ We would love to hear your feedback and suggestions on this. Just send an email 
 = How can I contribute a translation? =
 
 You will find a .po file in the languages folder which you can use. You can send the translation to <a href="mailto:info@codepress.nl">info@codepress.nl</a>.
-
 
 == Screenshots ==
 
